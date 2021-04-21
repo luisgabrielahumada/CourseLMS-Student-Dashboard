@@ -60,3 +60,8 @@ new Vue({
   i18n,
   render: h => h(App)
 }).$mount('#app')
+
+
+// Global Variables
+Vue.prototype.$api_host = 'http://localhost/api/v1/student/';
+Vue.prototype.$host     = 'http://localhost/';
