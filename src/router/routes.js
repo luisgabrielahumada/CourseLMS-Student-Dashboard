@@ -75,25 +75,19 @@ export default [
         path: '/',
         name: 'home',
         meta: {
-            authRequired: true,
+            authRequired: false,
         },
         component: () => import('../views/pages/student/index')
     },
     {
         path: '/teachers',
         name: 'teachers',
-        meta: {
-            authRequired: true,
-        },
         component: () => import('../views/pages/student/teachers')
     },
 
     {
         path: '/courses/:teacher',
         name: 'Courses',
-        meta: {
-            authRequired: true,
-        },
         component: () => import('../views/pages/student/courses')
     },
 
