@@ -41,7 +41,9 @@ export default {
           <b-card-title>
             <h5 class="card-title">{{ category.name }}</h5>
           </b-card-title>
-          <a :href="category.route" class="btn btn-primary btn-block">Course Page</a>
+          <router-link
+                :to='category.route'
+                class="btn btn-primary btn-block">Categories</router-link>
         </b-card>
       </div>
       <!-- end col -->

@@ -32,7 +32,9 @@ export default {
             Some quick example text to build on the card title and make
             up the bulk of the card's content.
           </b-card-text> -->
-          <a href="/teachers" class="btn btn-primary btn-block">Teachers</a>
+          <router-link
+                to="/teachers"
+                class="btn btn-primary btn-block">Teachers</router-link>
         </b-card>
       </div>
       <!-- end col -->
@@ -40,7 +42,9 @@ export default {
       <div class="col-lg-6 col-xl-3">
         <!-- Simple card -->
         <b-card :img-src="require('@/assets/images/student/universities.jpg')" img-alt="Universities image" img-top>
-          <a href="javascript:void(0);" class="btn btn-primary btn-block">Universities</a>
+          <router-link
+                to="/"
+                class="btn btn-primary btn-block">Universities</router-link>
         </b-card>
       </div>
       <!-- end col -->
@@ -48,7 +52,9 @@ export default {
       <div class="col-lg-6 col-xl-3">
         <!-- Simple card -->
         <b-card :img-src="require('@/assets/images/student/schools.jpg')" img-alt="Schools image" img-top>
-          <a href="javascript:void(0);" class="btn btn-primary btn-block">Schools</a>
+          <router-link
+                to="/"
+                class="btn btn-primary btn-block">Schools</router-link>
         </b-card>
       </div>
       <!-- end col -->
@@ -56,7 +62,9 @@ export default {
       <div class="col-lg-6 col-xl-3">
         <!-- Simple card -->
         <b-card :img-src="require('@/assets/images/student/courses.jpg')" img-alt="Free Courses image" img-top>
-          <a href="courses/0" class="btn btn-primary btn-block">Free Courses</a>
+          <router-link
+                to="/"
+                class="btn btn-primary btn-block">Free Courses</router-link>
         </b-card>
       </div>
       <!-- end col -->

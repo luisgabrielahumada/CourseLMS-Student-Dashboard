@@ -6,26 +6,26 @@ export const menuItems = [
     },
     {
         id: 2,
-        label: 'Main',
+        label: 'Home',
         icon: ' ri-home-4-line',
         link: '/'
     },
     {
         id: 3,
-        label: 'Alerts',
+        label: 'Notifications',
         icon: ' ri-notification-4-line',
         link: '/'
     },
     {
         id: 4,
-        label: 'Courses',
+        label: 'Free Courses',
         icon: 'ri-play-fill',
         link: '/courses/0'
     },
        
     {
         id: 5,
-        label: 'Teachers',
+        label: 'All Teachers',
         icon: ' ri-user-2-fill',
         link: '/teachers'
     }    
