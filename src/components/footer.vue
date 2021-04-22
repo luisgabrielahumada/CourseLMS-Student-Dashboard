@@ -59,6 +59,7 @@ export default {
 <style>
 .footer{
   height: 75px;
+  position:fixed;
 }
 
 .button-container{
