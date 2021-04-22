@@ -31,7 +31,8 @@ export default {
     <div class="row">
       <div v-for="teacher in teachers" :key="teacher.user_id" class="col-lg-3 col-md-4">
         <!-- Simple card -->
-        <b-card :img-src="teacher.image" img-alt="Teachers image" img-top>
+        <b-card class="text-center">
+          <img :src="teacher.image" alt class="rounded avatar-lg mb-4" />
           <b-card-title>
             <h5 class="card-title">{{ teacher.name }}</h5>
           </b-card-title>

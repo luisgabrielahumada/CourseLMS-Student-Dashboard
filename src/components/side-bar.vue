@@ -5,6 +5,7 @@ import { layoutComputed } from "@/state/helpers";
 import MetisMenu from "metismenujs/dist/metismenujs";
 
 import { menuItems } from "./student";
+import axios from 'axios'
 
 export default {
   components: {
@@ -27,6 +28,7 @@ export default {
   data() {
     return {
       menuItems: menuItems,
+      user_detail: ''
     };
   },
   computed: {
@@ -83,6 +85,12 @@ export default {
       }
     }
   },
+
+  async created() {
+    const response = await axios.get(this.$api_host + 'user/detail');  // Load the data from your api url
+    this.detail = response.data.teachers;  // set the data
+  },
+
   methods: {
     /**
      * Returns true or false if given menu item has child or not
@@ -177,6 +185,7 @@ export default {
       <!--- Sidemenu -->
       <div id="sidebar-menu">
         <!-- Left Menu Start -->
+        
         <ul class="metismenu list-unstyled" id="side-menu">
           <template v-for="item in menuItems">
             <li class="menu-title" v-if="item.isTitle" :key="item.id">

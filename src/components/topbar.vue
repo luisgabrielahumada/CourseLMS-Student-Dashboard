@@ -86,19 +86,19 @@ export default {
         <div class="navbar-brand-box">
           <a href="" class="logo logo-dark">
             <span class="logo-sm">
-              <img src="@/assets/images/logo-sm-dark.png" alt height="22" />
+              <img src="http://lms.olmaa.net/public/uploads/site/header.png" alt height="22" />
             </span>
             <span class="logo-lg">
-              <img src="@/assets/images/logo-dark.png" alt height="20" />
+              <img src="http://lms.olmaa.net/public/uploads/site/header.png" alt height="20" />
             </span>
           </a>
 
           <a href="" class="logo logo-light">
             <span class="logo-sm">
-              <img src="@/assets/images/logo-sm-light.png" alt height="22" />
+              <img src="http://lms.olmaa.net/public/uploads/site/header.png" alt height="22" />
             </span>
             <span class="logo-lg">
-              <img src="@/assets/images/logo-light.png" alt height="20" />
+              <img src="http://lms.olmaa.net/public/uploads/site/header.png" alt height="20" />
             </span>
           </a>
         </div>

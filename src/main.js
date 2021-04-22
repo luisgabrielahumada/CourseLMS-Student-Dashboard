@@ -63,8 +63,8 @@ new Vue({
 
 
 // Global Variables
-Vue.prototype.$api_host = 'http://localhost/api/v1/student/';
-Vue.prototype.$host     = 'http://localhost/';
+// Vue.prototype.$api_host = 'http://localhost/api/v1/student/';
+// Vue.prototype.$host     = 'http://localhost/';
 
-// Vue.prototype.$api_host = 'http://lms.olmaa.net/api/v1/student/';
-// Vue.prototype.$host     = 'http://lms.olmaa.net/';
+Vue.prototype.$api_host = 'http://lms.olmaa.net/api/v1/student/';
+Vue.prototype.$host     = 'http://lms.olmaa.net/';
