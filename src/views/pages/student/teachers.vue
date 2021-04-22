@@ -21,7 +21,7 @@ export default {
     const response = await axios.get(this.$api_host + 'all/teachers');  // Load the data from your api url
     this.teachers = response.data.teachers;  // set the data
     this.teachers.forEach(teacher => {
-      teacher.route_url = '/courses/' + teacher.user_id;
+      teacher.route_url = '/categories/' + teacher.user_id;
     });
   }
 };

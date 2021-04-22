@@ -20,7 +20,8 @@ export default {
   async created() {
     let config = {
       params: {
-        teacher_id: this.$route.params.teacher
+        teacher_id: this.$route.params.teacher,
+        category_id : this.$route.params.category,
       },
     }
     const response = await axios.get(this.$api_host + 'teacher/courses', config);  // Load the data from your api url

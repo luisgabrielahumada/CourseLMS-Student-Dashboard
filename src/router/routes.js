@@ -87,9 +87,16 @@ export default [
         },
         component: () => import('../views/pages/student/teachers')
     },
-
     {
-        path: '/courses/:teacher',
+        path: '/categories/:teacher',
+        name: 'Categories',
+        meta: {
+            authRequired: false,
+        },
+        component: () => import('../views/pages/student/categories')
+    },
+    {
+        path: '/courses/:teacher/:category',
         name: 'Courses',
         meta: {
             authRequired: false,
