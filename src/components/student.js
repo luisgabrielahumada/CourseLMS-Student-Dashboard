@@ -20,7 +20,7 @@ export const menuItems = [
         id: 4,
         label: 'Free Courses',
         icon: 'ri-play-fill',
-        link: '/courses/0'
+        link: '/courses/0/0'
     },
        
     {

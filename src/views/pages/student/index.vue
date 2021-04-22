@@ -63,7 +63,7 @@ export default {
         <!-- Simple card -->
         <b-card :img-src="require('@/assets/images/student/courses.jpg')" img-alt="Free Courses image" img-top>
           <router-link
-                to="/"
+                to="/courses/0/0"
                 class="btn btn-primary btn-block">Free Courses</router-link>
         </b-card>
       </div>
