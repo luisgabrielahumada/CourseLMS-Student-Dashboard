@@ -82,12 +82,18 @@ export default [
     {
         path: '/teachers',
         name: 'teachers',
+        meta: {
+            authRequired: false,
+        },
         component: () => import('../views/pages/student/teachers')
     },
 
     {
         path: '/courses/:teacher',
         name: 'Courses',
+        meta: {
+            authRequired: false,
+        },
         component: () => import('../views/pages/student/courses')
     },
 

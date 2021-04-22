@@ -1,11 +1,11 @@
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
-// export const authComputed = {
-//   ...mapState('auth', {
-//     currentUser: (state) => state.currentUser,
-//   }),
-//   ...mapGetters('auth', ['loggedIn']),
-// }
+export const authComputed = {
+  ...mapState('auth', {
+    currentUser: (state) => state.currentUser,
+  }),
+  ...mapGetters('auth', ['loggedIn']),
+}
 
 export const layoutComputed = {
   ...mapState('layout', {

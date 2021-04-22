@@ -56,7 +56,7 @@ export default {
       <div class="col-lg-6 col-xl-3">
         <!-- Simple card -->
         <b-card :img-src="require('@/assets/images/student/courses.jpg')" img-alt="Free Courses image" img-top>
-          <a href="/courses/0" class="btn btn-primary btn-block">Free Courses</a>
+          <a href="courses/0" class="btn btn-primary btn-block">Free Courses</a>
         </b-card>
       </div>
       <!-- end col -->
