@@ -1,6 +1,6 @@
 <script>
 import { required, email } from "vuelidate/lib/validators";
-
+import axios from 'axios'
 import {
   authMethods,
   authFackMethods,
@@ -41,36 +41,65 @@ export default {
       if (this.$v.$invalid) {
         return;
       } else {
-        if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
-          this.tryingToLogIn = true;
-          // Reset the authError if it existed.
-          this.authError = null;
-          return (
-            this.logIn({
-              email: this.email,
-              password: this.password
-            })
-              // eslint-disable-next-line no-unused-vars
-              .then(token => {
-                this.tryingToLogIn = false;
-                this.isAuthError = false;
-                // Redirect to the originally requested page, or to the home page
-                this.$router.push(
-                  this.$route.query.redirectFrom || { name: "home" }
-                );
-              })
-              .catch(error => {
-                this.tryingToLogIn = false;
-                this.authError = error ? error : "";
-                this.isAuthError = true;
-              })
-          );
-        } else {
-          const { email, password } = this;
-          if (email && password) {
-            this.login({ email, password });
-          }
+        // if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
+        //   this.tryingToLogIn = true;
+        //   // Reset the authError if it existed.
+        //   this.authError = null;
+        //   return (
+        //     this.logIn({
+        //       email: this.email,
+        //       password: this.password
+        //     })
+        //       // eslint-disable-next-line no-unused-vars
+        //       .then(token => {
+        //         this.tryingToLogIn = false;
+        //         this.isAuthError = false;
+        //         // Redirect to the originally requested page, or to the home page
+        //         this.$router.push(
+        //           this.$route.query.redirectFrom || { name: "home" }
+        //         );
+        //       })
+        //       .catch(error => {
+        //         this.tryingToLogIn = false;
+        //         this.authError = error ? error : "";
+        //         this.isAuthError = true;
+        //       })
+        //   );
+        // } else {
+        //   const { email, password } = this;
+        //   if (email && password) {
+        //     this.login({ email, password });
+        //   }
+        // }
+                  
+        this.authError = null;
+
+        let config = {
+            email: this.email,
+            password : this.password,
+          
         }
+        axios.post(this.$api_host + 'student/login', config)
+          .then((response) => {
+            console.log(response)
+
+            if(response.data.success){
+              this.tryingToLogIn = false;
+              this.isAuthError = false;
+              // Redirect to the originally requested page, or to the home page
+              this.$router.push(
+                this.$route.query.redirectFrom || { name: "home" }
+              );
+            }else{
+              this.notification.message = response.data.message;
+              this.tryingToLogIn = false;
+              this.authError = response.data.message;
+              this.isAuthError = true;
+            }
+          })
+          .catch((error) => {
+            console.log(error);            
+          });          
       }
     }
   }

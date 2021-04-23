@@ -75,7 +75,7 @@ export default [
         path: '/',
         name: 'home',
         meta: {
-            authRequired: false,
+            authRequired: true,
         },
         component: () => import('../views/pages/student/index')
     },
@@ -83,7 +83,7 @@ export default [
         path: '/teachers',
         name: 'teachers',
         meta: {
-            authRequired: false,
+            authRequired: true,
         },
         component: () => import('../views/pages/student/teachers')
     },
@@ -91,7 +91,7 @@ export default [
         path: '/categories/:teacher',
         name: 'Categories',
         meta: {
-            authRequired: false,
+            authRequired: true,
         },
         component: () => import('../views/pages/student/categories')
     },
@@ -99,7 +99,7 @@ export default [
         path: '/courses/:teacher/:category',
         name: 'Courses',
         meta: {
-            authRequired: false,
+            authRequired: true,
         },
         component: () => import('../views/pages/student/courses')
     },
