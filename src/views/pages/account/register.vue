@@ -109,6 +109,13 @@ export default {
                 this.tryingToRegister = false;
                 this.isRegisterError = false;
                 this.registerSuccess = true;
+
+                localStorage.setItem('user', JSON.stringify(response.data.user));
+              
+                this.$current_user.id = response.data.user.id;
+                this.$current_user.name = response.data.user.name;
+                this.$current_user.image = response.data.user.image;
+                this.$current_user.balance = response.data.user.balance;
                 
                 // Redirect to the originally requested page, or to the home page
                 this.$router.push(
