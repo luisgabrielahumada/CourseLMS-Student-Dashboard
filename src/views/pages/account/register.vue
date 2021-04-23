@@ -250,7 +250,10 @@ export default {
                                   class="invalid-feedback"
                                 >Password is required again.</div>
                               </div>
-                              
+                            </div>
+
+                            <div class="col-lg-6">
+
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class="ri-smartphone-line auti-custom-input-icon"></i>
                                 <label for="phone">Phone Number</label>
@@ -267,10 +270,7 @@ export default {
                                   class="invalid-feedback"
                                 >Phone Number is required.</div>
                               </div>
-
-                            </div>
-
-                            <div class="col-lg-6">
+                              
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class=" ri-men-line auti-custom-input-icon"></i>
                                 <label for="male">Male</label>
@@ -305,56 +305,18 @@ export default {
                                 >School is required.</div>
                               </div>
 
-                              <div class="form-group auth-form-group-custom mb-4">
-                                <i class=" ri-check-line auti-custom-input-icon"></i>
-                                <label for="biotic">Biotic</label>
-                                <input
-                                  v-model="user.biotic"
-                                  type="text"
-                                  class="form-control"
-                                  id="biotic"
-                                  :class="{ 'is-invalid': submitted && $v.user.biotic.$error }"
-                                  placeholder="Enter Biotic"
-                                />
-                                <div
-                                  v-if="submitted && !$v.user.biotic.required"
-                                  class="invalid-feedback"
-                                >Biotic is required.</div>
-                              </div>
-
-
-                              <div class="form-group auth-form-group-custom mb-4">
-                                <i class=" ri-bank-line auti-custom-input-icon"></i>
-                                <label for="science">Science</label>
-                                <input
-                                  v-model="user.science"
-                                  type="text"
-                                  class="form-control"
-                                  id="science"
-                                  :class="{ 'is-invalid': submitted && $v.user.science.$error }"
-                                  placeholder="Enter Science"
-                                />
-                                <div
-                                  v-if="submitted && !$v.user.science.required"
-                                  class="invalid-feedback"
-                                >Science is required.</div>
-                              </div>
-
-                              <div class="form-group auth-form-group-custom mb-4">
-                                <i class="ri-edit-2-line auti-custom-input-icon"></i>
-                                <label for="literary">Literary</label>
-                                <input
-                                  v-model="user.literary"
-                                  type="text"
-                                  class="form-control"
-                                  id="literary"
-                                  :class="{ 'is-invalid': submitted && $v.user.literary.$error }"
-                                  placeholder="Enter Literary"
-                                />
-                                <div
-                                  v-if="submitted && !$v.user.literary.required"
-                                  class="invalid-feedback"
-                                >Literary is required.</div>
+                              <div class="form-group row">
+                                <label class="col-md-2 col-form-label"
+                                  >Select Major</label
+                                >
+                                <div class="col-md-10">
+                                  <select class="form-control ri-edit-2-line auti-custom-input-icon">
+                                    <option>Select Major</option>
+                                    <option>Biotic</option>
+                                    <option>Science</option>
+                                    <option>Literary</option>
+                                  </select>
+                                </div>
                               </div>
                             </div>
 
