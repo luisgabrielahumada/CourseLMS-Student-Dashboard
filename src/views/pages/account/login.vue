@@ -10,8 +10,8 @@ import {
 export default {
   data() {
     return {
-      email: "admin@themesdesign.in",
-      password: "123456",
+      email: "",
+      password: "",
       submitted: false
     };
   },

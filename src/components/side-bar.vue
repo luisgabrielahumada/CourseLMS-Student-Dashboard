@@ -4,7 +4,7 @@ import { layoutComputed } from "@/state/helpers";
 
 import MetisMenu from "metismenujs/dist/metismenujs";
 
-import { menuItems } from "./menu";
+import { menuItems } from "./student";
 // import axios from 'axios'
 
 export default {
@@ -109,6 +109,12 @@ export default {
             currentPosition + 200;
       }, 300);
     },
+
+    logout(){
+      localStorage.removeItem('user');
+      this.$router.push({ name: 'login' })
+    }
+
   },
   watch: {
     $route: {
@@ -178,6 +184,7 @@ export default {
     },
   },
 };
+
 </script>
 <template>
   <!-- ========== Left Sidebar Start ========== -->
@@ -224,7 +231,7 @@ export default {
 
               <router-link
                 :to="item.link"
-                v-if="!hasItems(item)"
+                v-if="!hasItems(item) && item.label != 'Logout'"
                 class="side-nav-link-ref"
               >
                 <i :class="`bx ${item.icon}`" v-if="item.icon"></i>
@@ -235,6 +242,22 @@ export default {
                   >{{ $t(item.badge.text) }}</span
                 >
               </router-link>
+
+              <a
+                :to="item.link"
+                v-if="!hasItems(item) && item.label == 'Logout'"
+                class="side-nav-link-ref"
+                href="javascript:void(0);"
+                v-on:click="logout()"
+              >
+                <i :class="`bx ${item.icon}`" v-if="item.icon"></i>
+                <span>{{ $t(item.label) }}</span>
+                <span
+                  :class="`badge badge-pill badge-${item.badge.variant} float-right`"
+                  v-if="item.badge"
+                  >{{ $t(item.badge.text) }}</span
+                >
+              </a>
 
               <ul v-if="hasItems(item)" class="sub-menu" aria-expanded="false">
                 <li v-for="(subitem, index) of item.subItems" :key="index">
