@@ -1,5 +1,7 @@
 <script>
 import { required, email } from "vuelidate/lib/validators";
+import axios from 'axios'
+
 import {
   authMethods,
   authFackMethods,
@@ -8,7 +10,7 @@ import {
 export default {
   data() {
     return {
-      user: { username: "", email: "", password: "" },
+      user: { username: "", email: "", password: "", resetpassword : "", phone : "", male : "", biotic : "", school : "", science : "", literary : "" },
       submitted: false,
       regError: null,
       tryingToRegister: false,
@@ -25,7 +27,14 @@ export default {
     user: {
       username: { required },
       email: { required, email },
-      password: { required }
+      password: { required },
+      resetpassword : { required },
+      phone : { required },
+      male : { required },
+      school : { required },
+      biotic : { required },
+      science : { required },
+      literary : { required },
     }
   },
   created() {
@@ -72,9 +81,44 @@ export default {
               })
           );
         } else {
-          const { email, username, password } = this.user;
-          if (email && username && password) {
-            this.registeruser(this.user);
+          const { email, username, password, resetpassword, phone, male, school, biotic, science, literary } = this.user;
+          if (email && username && password && resetpassword && phone && male && school && biotic && science && literary) {
+            
+          let config = {
+              email     : email,
+              name      : username,
+              password  : password,
+              phone     : phone,
+              male      : male,
+              school    : school,
+              biotic    : biotic,
+              science   : science,
+              literary  : literary
+          }
+
+          axios.post(this.$api_host + 'register', config)
+            .then((response) => {
+              console.log(response)
+
+              if(response.data.success){
+                this.tryingToRegister = false;
+                this.isRegisterError = false;
+                this.registerSuccess = true;
+                
+                // Redirect to the originally requested page, or to the home page
+                this.$router.push(
+                  this.$route.query.redirectFrom || { name: "home" }
+                );
+              }else{
+                this.tryingToRegister = false;
+                this.isRegisterError = true;
+                this.regError = response.data.message;
+              }
+            })
+            .catch((error) => {
+              console.log(error);            
+            });
+              
           }
         }
       }
@@ -93,7 +137,7 @@ export default {
     <div>
       <div class="container-fluid p-0">
         <div class="row no-gutters">
-          <div class="col-lg-4">
+          <div class="col-lg-8">
             <div class="authentication-page-content p-4 d-flex align-items-center min-vh-100">
               <div class="w-100">
                 <div class="row justify-content-center">
@@ -132,78 +176,211 @@ export default {
                           show
                           dismissible
                         >{{notification.message}}</b-alert>
-                        
-                        <form class="form-horizontal" @submit.prevent="tryToRegisterIn">
-                          <div class="form-group auth-form-group-custom mb-4">
-                            <i class="ri-user-2-line auti-custom-input-icon"></i>
-                            <label for="username">Username</label>
-                            <input
-                              v-model="user.username"
-                              type="text"
-                              class="form-control"
-                              id="username"
-                              :class="{ 'is-invalid': submitted && $v.user.username.$error }"
-                              placeholder="Enter username"
-                            />
-                            <div
-                              v-if="submitted && !$v.user.username.required"
-                              class="invalid-feedback"
-                            >Username is required.</div>
-                          </div>
-
-                          <div class="form-group auth-form-group-custom mb-4">
-                            <i class="ri-mail-line auti-custom-input-icon"></i>
-                            <label for="useremail">Email</label>
-                            <input
-                              v-model="user.email"
-                              type="email"
-                              class="form-control"
-                              id="useremail"
-                              placeholder="Enter email"
-                              :class="{ 'is-invalid': submitted && $v.user.email.$error }"
-                            />
-                            <div v-if="submitted && $v.user.email.$error" class="invalid-feedback">
-                              <span v-if="!$v.user.email.required">Email is required.</span>
-                              <span v-if="!$v.user.email.email">Please enter valid email.</span>
-                            </div>
-                          </div>
-
-                          <div class="form-group auth-form-group-custom mb-4">
-                            <i class="ri-lock-2-line auti-custom-input-icon"></i>
-                            <label for="userpassword">Password</label>
-                            <input
-                              v-model="user.password"
-                              type="password"
-                              class="form-control"
-                              id="userpassword"
-                              placeholder="Enter password"
-                              :class="{ 'is-invalid': submitted && $v.user.password.$error }"
-                            />
-                            <div
-                              v-if="submitted && !$v.user.password.required"
-                              class="invalid-feedback"
-                            >Password is required.</div>
-                          </div>
-
-                          <div class="text-center">
-                            <button
-                              class="btn btn-primary w-md waves-effect waves-light"
-                              type="submit"
-                            >Register</button>
-                          </div>
-
-                          <div class="mt-4 text-center">
-                            <p class="mb-0">
-                              By registering you agree to the Nazox
-                              <a
-                                href="#"
-                                class="text-primary"
-                              >Terms of Use</a>
-                            </p>
-                          </div>
-                        </form>
+                                                
                       </div>
 
+
+                        <form class="form-horizontal" @submit.prevent="tryToRegisterIn">
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class="ri-user-2-line auti-custom-input-icon"></i>
+                                <label for="username">Username</label>
+                                <input
+                                  v-model="user.username"
+                                  type="text"
+                                  class="form-control"
+                                  id="username"
+                                  :class="{ 'is-invalid': submitted && $v.user.username.$error }"
+                                  placeholder="Enter username"
+                                />
+                                <div
+                                  v-if="submitted && !$v.user.username.required"
+                                  class="invalid-feedback"
+                                >Username is required.</div>
+                              </div>
+
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class="ri-mail-line auti-custom-input-icon"></i>
+                                <label for="useremail">Email</label>
+                                <input
+                                  v-model="user.email"
+                                  type="email"
+                                  class="form-control"
+                                  id="useremail"
+                                  placeholder="Enter email"
+                                  :class="{ 'is-invalid': submitted && $v.user.email.$error }"
+                                />
+                                <div v-if="submitted && $v.user.email.$error" class="invalid-feedback">
+                                  <span v-if="!$v.user.email.required">Email is required.</span>
+                                  <span v-if="!$v.user.email.email">Please enter valid email.</span>
+                                </div>
+                              </div>
+
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class="ri-lock-2-line auti-custom-input-icon"></i>
+                                <label for="userpassword">Password</label>
+                                <input
+                                  v-model="user.password"
+                                  type="password"
+                                  class="form-control"
+                                  id="userpassword"
+                                  placeholder="Enter password"
+                                  :class="{ 'is-invalid': submitted && $v.user.password.$error }"
+                                />
+                                <div
+                                  v-if="submitted && !$v.user.password.required"
+                                  class="invalid-feedback"
+                                >Password is required.</div>
+                              </div>
+
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class="ri-lock-2-line auti-custom-input-icon"></i>
+                                <label for="resetpassword">Retype Password</label>
+                                <input
+                                  v-model="user.resetpassword"
+                                  type="password"
+                                  class="form-control"
+                                  id="resetpassword"
+                                  placeholder="Enter password again"
+                                  :class="{ 'is-invalid': submitted && $v.user.resetpassword.$error }"
+                                />
+                                <div
+                                  v-if="submitted && !$v.user.resetpassword.required"
+                                  class="invalid-feedback"
+                                >Password is required again.</div>
+                              </div>
+                              
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class="ri-smartphone-line auti-custom-input-icon"></i>
+                                <label for="phone">Phone Number</label>
+                                <input
+                                  v-model="user.phone"
+                                  type="text"
+                                  class="form-control"
+                                  id="phone"
+                                  :class="{ 'is-invalid': submitted && $v.user.phone.$error }"
+                                  placeholder="Enter Phone number"
+                                />
+                                <div
+                                  v-if="submitted && !$v.user.phone.required"
+                                  class="invalid-feedback"
+                                >Phone Number is required.</div>
+                              </div>
+
+                            </div>
+
+                            <div class="col-lg-6">
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class=" ri-men-line auti-custom-input-icon"></i>
+                                <label for="male">Male</label>
+                                <input
+                                  v-model="user.male"
+                                  type="text"
+                                  class="form-control"
+                                  id="male"
+                                  :class="{ 'is-invalid': submitted && $v.user.male.$error }"
+                                  placeholder="Enter Male"
+                                />
+                                <div
+                                  v-if="submitted && !$v.user.male.required"
+                                  class="invalid-feedback"
+                                >Male is required.</div>
+                              </div>
+
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class=" ri-building-4-line auti-custom-input-icon"></i>
+                                <label for="male">School</label>
+                                <input
+                                  v-model="user.school"
+                                  type="text"
+                                  class="form-control"
+                                  id="school"
+                                  :class="{ 'is-invalid': submitted && $v.user.school.$error }"
+                                  placeholder="Enter School"
+                                />
+                                <div
+                                  v-if="submitted && !$v.user.school.required"
+                                  class="invalid-feedback"
+                                >School is required.</div>
+                              </div>
+
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class=" ri-check-line auti-custom-input-icon"></i>
+                                <label for="biotic">Biotic</label>
+                                <input
+                                  v-model="user.biotic"
+                                  type="text"
+                                  class="form-control"
+                                  id="biotic"
+                                  :class="{ 'is-invalid': submitted && $v.user.biotic.$error }"
+                                  placeholder="Enter Biotic"
+                                />
+                                <div
+                                  v-if="submitted && !$v.user.biotic.required"
+                                  class="invalid-feedback"
+                                >Biotic is required.</div>
+                              </div>
+
+
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class=" ri-bank-line auti-custom-input-icon"></i>
+                                <label for="science">Science</label>
+                                <input
+                                  v-model="user.science"
+                                  type="text"
+                                  class="form-control"
+                                  id="science"
+                                  :class="{ 'is-invalid': submitted && $v.user.science.$error }"
+                                  placeholder="Enter Science"
+                                />
+                                <div
+                                  v-if="submitted && !$v.user.science.required"
+                                  class="invalid-feedback"
+                                >Science is required.</div>
+                              </div>
+
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class="ri-edit-2-line auti-custom-input-icon"></i>
+                                <label for="literary">Literary</label>
+                                <input
+                                  v-model="user.literary"
+                                  type="text"
+                                  class="form-control"
+                                  id="literary"
+                                  :class="{ 'is-invalid': submitted && $v.user.literary.$error }"
+                                  placeholder="Enter Literary"
+                                />
+                                <div
+                                  v-if="submitted && !$v.user.literary.required"
+                                  class="invalid-feedback"
+                                >Literary is required.</div>
+                              </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                              <div class="text-center">
+                                <button
+                                  class="btn btn-primary w-md waves-effect waves-light"
+                                  type="submit"
+                                >Register</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+
+                      
+
+                      <div class="mt-4 text-center">
+                        <p class="mb-0">
+                          By registering you agree to the Nazox
+                          <a
+                            href="#"
+                            class="text-primary"
+                          >Terms of Use</a>
+                        </p>
+                      </div>
+                      
                       <div class="mt-5 text-center">
                         <p>
                           Already have an account ?
@@ -224,7 +401,8 @@ export default {
               </div>
             </div>
           </div>
-          <div class="col-lg-8">
+
+          <div class="col-lg-4">
             <div class="authentication-bg">
               <div class="bg-overlay"></div>
             </div>
@@ -234,3 +412,9 @@ export default {
     </div>
   </div>
 </template>
+
+<style scoped>
+.authentication-page-content{
+  height:auto;
+}
+</style>

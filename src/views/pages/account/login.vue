@@ -79,13 +79,14 @@ export default {
             password : this.password,
           
         }
-        axios.post(this.$api_host + 'student/login', config)
+        axios.post(this.$api_host + 'login', config)
           .then((response) => {
-            console.log(response)
 
             if(response.data.success){
               this.tryingToLogIn = false;
               this.isAuthError = false;
+              localStorage.setItem('user', JSON.stringify(response.data.user));
+
               // Redirect to the originally requested page, or to the home page
               this.$router.push(
                 this.$route.query.redirectFrom || { name: "home" }
