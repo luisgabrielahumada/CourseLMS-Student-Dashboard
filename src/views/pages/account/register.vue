@@ -38,6 +38,7 @@ export default {
       email: { required, email },
       password: { required },
       resetpassword : { required },
+      city : { required },
       phone : { required },
       male : { required },
       school : { required },
@@ -88,13 +89,14 @@ export default {
               })
           );
         } else {
-          const { email, username, password, resetpassword, phone, male, school, major } = this.user;
-          if (email && username && password && resetpassword && phone && male && school && major) {
+          const { email, username, password, resetpassword, phone, male, school, major, city } = this.user;
+          if (email && username && password && resetpassword && phone && male && school && major && city) {
             
           let config = {
               email     : email,
               name      : username,
               password  : password,
+              city      : city,
               phone     : phone,
               male      : male,
               school    : school,
@@ -197,14 +199,14 @@ export default {
                             <div class="col-lg-6">
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class="ri-user-2-line auti-custom-input-icon"></i>
-                                <label for="username">Username</label>
+                                <label for="username">Full Name</label>
                                 <input
                                   v-model="user.username"
                                   type="text"
                                   class="form-control"
                                   id="username"
                                   :class="{ 'is-invalid': submitted && $v.user.username.$error }"
-                                  placeholder="Enter username"
+                                  placeholder="Enter Full Name"
                                 />
                                 <div
                                   v-if="submitted && !$v.user.username.required"
@@ -285,15 +287,28 @@ export default {
                               
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class=" ri-men-line auti-custom-input-icon"></i>
-                                <label for="male">Male</label>
+                                <label for="male">City</label>
                                 <input
-                                  v-model="user.male"
+                                  v-model="user.city"
                                   type="text"
                                   class="form-control"
-                                  id="male"
-                                  :class="{ 'is-invalid': submitted && $v.user.male.$error }"
+                                  id="city"
+                                  :class="{ 'is-invalid': submitted && $v.user.city.$error }"
                                   placeholder="Enter Male"
                                 />
+                                <div
+                                  v-if="submitted && !$v.user.city.required"
+                                  class="invalid-feedback"
+                                >City is required.</div>
+                              </div>
+
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class=" ri-men-line auti-custom-input-icon"></i>
+                                <label for="male">Male</label>
+                                <select id="major" class="form-control" v-model="user.male">
+                                  <option value="1" selected>Man</option>
+                                  <option value="0">Woman</option>
+                                </select>
                                 <div
                                   v-if="submitted && !$v.user.male.required"
                                   class="invalid-feedback"
