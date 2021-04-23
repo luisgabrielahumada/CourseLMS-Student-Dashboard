@@ -38,8 +38,8 @@ router.beforeEach((routeTo, routeFrom, next) => {
 
     // If auth isn't required for the route, just continue.
     if (!authRequired) return next();
-    console.log('router');
 
+    console.log("auth/loggedIn ", store.getters['auth/loggedIn']);
     // If auth is required and the user is logged in...
     if (store.getters['auth/loggedIn']) {
       // Validate the local user token...

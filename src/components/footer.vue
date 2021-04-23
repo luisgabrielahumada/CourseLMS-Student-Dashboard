@@ -26,7 +26,7 @@ export default {
           
           <router-link
                 to="/">
-                <b-button variant="warning"><i class=" ri-home-4-line align-middle"><br>Home</i></b-button>
+                <b-button variant="warning"><i class="ri-home-4-fill align-middle"><br>Home</i></b-button>
           </router-link>
 
           <a :href='wallet_url'>
@@ -38,11 +38,11 @@ export default {
           </a>
 
           <a :href='messages_url'>
-                <b-button variant="warning"><i class="ri-notification-4-line align-middle"></i><br>Messages</b-button>
+                <b-button variant="warning"><i class="ri-notification-4-fill align-middle"></i><br>Messages</b-button>
           </a>
 
           <a :href='discover_url'>
-                <b-button variant="warning"><i class=" ri-search-2-line align-middle"></i><br>Discover</b-button>
+                <b-button variant="warning"><i class=" ri-search-2-fill align-middle"></i><br>Discover</b-button>
           </a>
 
           <a :href='possell_url'>
