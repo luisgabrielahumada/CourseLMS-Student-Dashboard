@@ -1,6 +1,7 @@
 <script>
 import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
+import PageHeader from "@/components/page-header";
 import axios from 'axios'
 /**
  * Cards component
@@ -10,10 +11,11 @@ export default {
     title: "Courses",
     meta: [{ name: "description", content: appConfig.description }]
   },
-  components: { Layout},
+  components: { Layout, PageHeader},
   data() {
     return {
-      courses: []
+      courses: [],
+      title : "Courses"
     };
   },
 
@@ -34,6 +36,7 @@ export default {
 </script>
 <template>
   <Layout>
+    <PageHeader :title="title"/>
     <div class="row">
       <div v-for="course in courses" :key="course.user_id" class="col-lg-3 col-md-4 col-sm-6">
         <b-card :img-src="course.image" img-alt="Course image" img-top>

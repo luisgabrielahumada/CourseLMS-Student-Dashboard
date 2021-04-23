@@ -1,6 +1,7 @@
 <script>
 import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
+import PageHeader from "@/components/page-header";
 import axios from 'axios'
 /**
  * Cards component
@@ -10,10 +11,11 @@ export default {
     title: "Categories",
     meta: [{ name: "description", content: appConfig.description }]
   },
-  components: { Layout},
+  components: { Layout, PageHeader},
   data() {
     return {
-      categories: []
+      categories: [],
+      title : "Categories"
     };
   },
 
@@ -35,6 +37,7 @@ export default {
 </script>
 <template>
   <Layout>
+    <PageHeader :title="title"/>
     <div class="row">
       <div v-for="category in categories" :key="category.id" class="col-lg-3 col-md-4">
         <b-card :img-src="category.icon" img-alt="Category image" img-top>

@@ -1,19 +1,20 @@
 <script>
 import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
+import PageHeader from "@/components/page-header";
 
 /**
  * Cards component
  */
 export default {
   page: {
-    title: "Cards",
+    title: "Home",
     meta: [{ name: "description", content: appConfig.description }]
   },
-  components: { Layout },
+  components: { Layout, PageHeader },
   data() {
     return {
-      title: "Cards",
+      title: "Home",
     };
   }
 };
@@ -21,6 +22,7 @@ export default {
 
 <template>
   <Layout>
+    <PageHeader :title="title"/>
     <div class="row">
       <div class="col-lg-6 col-xl-3">
         <!-- Simple card -->
