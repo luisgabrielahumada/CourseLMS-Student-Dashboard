@@ -15,9 +15,18 @@ export default {
       regError: null,
       tryingToRegister: false,
       isRegisterError: false,
-      registerSuccess: false
+      registerSuccess: false,
+      colorOptions: [
+          { text: "Option nr 1", value: "Option 1", selected: true },
+          { text: "Option nr 2", value: "Option 2" },
+          { text: "Option nr 3", value: "Option 3" },
+          { text: "Option nr 4", value: "Option 4" },
+          { text: "Option nr 5", value: "Option 5" }
+        ]
     };
   },
+  components: {
+    },
   computed: {
     notification() {
       return this.$store ? this.$store.state.notification : null;
@@ -32,9 +41,7 @@ export default {
       phone : { required },
       male : { required },
       school : { required },
-      biotic : { required },
-      science : { required },
-      literary : { required },
+      major : { required },
     }
   },
   created() {
@@ -81,8 +88,8 @@ export default {
               })
           );
         } else {
-          const { email, username, password, resetpassword, phone, male, school, biotic, science, literary } = this.user;
-          if (email && username && password && resetpassword && phone && male && school && biotic && science && literary) {
+          const { email, username, password, resetpassword, phone, male, school, major } = this.user;
+          if (email && username && password && resetpassword && phone && male && school && major) {
             
           let config = {
               email     : email,
@@ -91,9 +98,7 @@ export default {
               phone     : phone,
               male      : male,
               school    : school,
-              biotic    : biotic,
-              science   : science,
-              literary  : literary
+              major     : major,
           }
 
           axios.post(this.$api_host + 'register', config)
@@ -290,7 +295,7 @@ export default {
 
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class=" ri-building-4-line auti-custom-input-icon"></i>
-                                <label for="male">School</label>
+                                <label for="school">School</label>
                                 <input
                                   v-model="user.school"
                                   type="text"
@@ -305,18 +310,20 @@ export default {
                                 >School is required.</div>
                               </div>
 
-                              <div class="form-group row">
-                                <label class="col-md-2 col-form-label"
-                                  >Select Major</label
-                                >
-                                <div class="col-md-10">
-                                  <select class="form-control ri-edit-2-line auti-custom-input-icon">
-                                    <option>Select Major</option>
-                                    <option>Biotic</option>
-                                    <option>Science</option>
-                                    <option>Literary</option>
-                                  </select>
-                                </div>
+                              <div class="form-group auth-form-group-custom mb-4">
+                                <i class=" ri-edit-line auti-custom-input-icon"></i>
+                                <label for="major">Major</label>
+                                <select id="major" class="form-control" v-model="user.major">
+                                  <option selected>Select Major</option>
+                                  <option value="Science">Science</option>
+                                  <option value="Literary">Literary</option>
+                                  <option value="Biotic">Biotic</option>
+                                </select>
+                                
+                                <div
+                                  v-if="submitted && !$v.user.major.required"
+                                  class="invalid-feedback"
+                                >Major is required.</div>
                               </div>
                             </div>
 
