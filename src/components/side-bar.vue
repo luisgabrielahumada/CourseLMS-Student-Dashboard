@@ -4,8 +4,8 @@ import { layoutComputed } from "@/state/helpers";
 
 import MetisMenu from "metismenujs/dist/metismenujs";
 
-import { menuItems } from "./menu";
-import axios from 'axios'
+import { menuItems } from "./student";
+// import axios from 'axios'
 
 export default {
   components: {
@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       menuItems: menuItems,
-      user_detail: ''
+      user: '',
     };
   },
   computed: {
@@ -86,9 +86,10 @@ export default {
     }
   },
 
-  async created() {
-    const response = await axios.get(this.$api_host + 'user/detail');  // Load the data from your api url
-    this.detail = response.data.teachers;  // set the data
+  created() {
+    // const response = await axios.get(this.$api_host + 'user/detail');  // Load the data from your api url
+    // this.detail = response.data.teachers;  // set the data
+    this.user = this.$current_user;
   },
 
   methods: {
@@ -186,6 +187,15 @@ export default {
       <div id="sidebar-menu">
         <!-- Left Menu Start -->
         
+        <div class="text-center mt-2 mb-4" >
+          <img :src='user.image' alt class="rounded-circle avatar-md mb-4" />
+          <b-card-title>
+            <h5 class="sidebar-text">{{ user.name }}</h5>
+            <h5 class="sidebar-text">Balance : {{ user.balance }}</h5>
+          </b-card-title>
+        </div>
+
+
         <ul class="metismenu list-unstyled" id="side-menu">
           <template v-for="item in menuItems">
             <li class="menu-title" v-if="item.isTitle" :key="item.id">
@@ -267,3 +277,10 @@ export default {
   </div>
   <!-- Left Sidebar End -->
 </template>
+
+
+<style>
+.sidebar-text{
+  color:white !important;
+}
+</style>
