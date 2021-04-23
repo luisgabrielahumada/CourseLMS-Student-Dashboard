@@ -26,27 +26,27 @@ export default {
           
           <router-link
                 to="/">
-                <b-button variant="warning">Home <i class=" ri-home-4-line align-middle ml-2"></i></b-button>
+                <b-button variant="warning"><i class=" ri-home-4-line align-middle"><br>Home</i></b-button>
           </router-link>
 
           <a :href='wallet_url'>
-                <b-button variant="warning">Wallet <i class="ri-wallet-3-fill align-middle ml-2"></i></b-button>
+                <b-button variant="warning"><i class="ri-wallet-3-fill align-middle"></i><br>Wallet</b-button>
           </a>
 
           <a :href='mycourses_url'>
-                <b-button variant="warning">My Courses <i class="ri-play-fill align-middle ml-2"></i></b-button>
+                <b-button variant="warning"><i class="ri-play-fill align-middle"></i><br>My Courses</b-button>
           </a>
 
           <a :href='messages_url'>
-                <b-button variant="warning">Messages <i class="ri-notification-4-line align-middle ml-2"></i></b-button>
+                <b-button variant="warning"><i class="ri-notification-4-line align-middle"></i><br>Messages</b-button>
           </a>
 
           <a :href='discover_url'>
-                <b-button variant="warning">Discover <i class=" ri-search-2-line align-middle ml-2"></i></b-button>
+                <b-button variant="warning"><i class=" ri-search-2-line align-middle"></i><br>Discover</b-button>
           </a>
 
           <a :href='possell_url'>
-                <b-button variant="warning">POS Sell <i class=" ri-shopping-bag-fill align-middle ml-2"></i></b-button>
+                <b-button variant="warning"><i class=" ri-shopping-bag-fill align-middle"></i><br>POS Sell</b-button>
           </a>
 
         </div>
@@ -58,8 +58,9 @@ export default {
 
 <style>
 .footer{
-  height: 75px;
+  height: 80px;
   position:fixed;
+  padding:10px;
 }
 
 .button-container{
