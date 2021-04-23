@@ -286,7 +286,7 @@ export default {
                               </div>
                               
                               <div class="form-group auth-form-group-custom mb-4">
-                                <i class=" ri-men-line auti-custom-input-icon"></i>
+                                <i class="ri-bank-fill auti-custom-input-icon"></i>
                                 <label for="male">City</label>
                                 <input
                                   v-model="user.city"
