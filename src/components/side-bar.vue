@@ -198,7 +198,7 @@ export default {
           <img :src='user.image' alt class="rounded-circle avatar-md mb-4" />
           <b-card-title>
             <h5 class="sidebar-text">{{ user.name }}</h5>
-            <h5 class="sidebar-text">Balance : {{ user.balance }}</h5>
+            <h5 class="sidebar-text">Balance : {{ balanceWithDollar() }}</h5>
           </b-card-title>
         </div>
 

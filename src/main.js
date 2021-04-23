@@ -86,3 +86,21 @@ else
     phone: '(001) 4544 565 333',
     balance: 1000
   };
+
+  // Define global functions
+Vue.mixin({
+  methods: {
+    convertWithDollar(num){
+      var dollars = num / 1.0;
+      dollars = dollars.toLocaleString("en-US", {style:"currency", currency:"USD"}); 
+      return dollars;
+    },
+
+    balanceWithDollar(){
+      var num = this.$current_user.balance;
+      var dollars = num / 1.0;
+      dollars = dollars.toLocaleString("en-US", {style:"currency", currency:"USD"}); 
+      return dollars;
+    }
+  }
+});
