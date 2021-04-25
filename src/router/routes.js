@@ -105,6 +105,15 @@ export default [
     },
 
     {
+        path: '/course-detail/:course',
+        name: 'course-detail',
+        meta: {
+            authRequired: true,
+        },
+        component: () => import('../views/pages/student/course-detail')
+    },
+
+    {
         path: '/chat',
         name: 'Chat',
         meta: {

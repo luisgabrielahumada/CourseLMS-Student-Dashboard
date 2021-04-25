@@ -29,7 +29,7 @@ export default {
     const response = await axios.get(this.$api_host + 'teacher/courses', config);  // Load the data from your api url
     this.courses = response.data.courses;  // set the data
     this.courses.forEach(course => {
-      course.route = this.$host + 'course/' + course.slug;
+      course.route = '/course-detail/' + course.id;
     });
   }
 };
@@ -51,6 +51,10 @@ export default {
         </b-card>
       </div>
       <!-- end col-->
+
+      <div v-if='courses.sizeof == 0'>
+        <h4 class="card-title">There are no courses.</h4>
+      </div>
 
     </div>
     <!-- end row -->
