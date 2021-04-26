@@ -7,6 +7,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import VueMask from 'v-mask'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import VueYoutube from 'vue-youtube'
+import axios from 'axios';
 
 import vco from "v-click-outside"
 
@@ -35,6 +36,12 @@ if (process.env.VUE_APP_DEFAULT_AUTH === "firebase") {
   initFirebaseBackend(firebaseConfig);
 } else {
   configureFakeBackend();
+}
+
+// Get Access token from Local Storage
+let token = localStorage.getItem('access_token');
+if(token) {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
 
 Vue.config.productionTip = false
@@ -86,6 +93,8 @@ else
     phone: '(001) 4544 565 333',
     balance: 1000
   };
+
+Vue.prototype.$access_token = '';
 
   // Define global functions
 Vue.mixin({

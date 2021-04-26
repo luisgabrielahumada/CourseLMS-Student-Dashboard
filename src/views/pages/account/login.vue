@@ -80,32 +80,35 @@ export default {
           
         }
         axios.post(this.$api_host + 'login', config)
-          .then((response) => {
+          .then(({data}) => {
 
-            if(response.data.success){
+            if(data.success){
               this.tryingToLogIn = false;
               this.isAuthError = false;
-              localStorage.setItem('user', JSON.stringify(response.data.user));
+              localStorage.setItem('user', JSON.stringify(data.user));
               
-              this.$current_user.id = response.data.user.id;
-              this.$current_user.name = response.data.user.name;
-              this.$current_user.image = response.data.user.image;
-              this.$current_user.balance = response.data.user.balance;
-              
+              this.$current_user.id = data.user.id;
+              this.$current_user.name = data.user.name;
+              this.$current_user.image = data.user.image;
+              this.$current_user.balance = data.user.balance;
+
+              // Save Access Token to local storage
+              localStorage.setItem("access_token", data.access_token);
+              axios.defaults.headers.common['Authorization'] = `Bearer ${data.access_token}`;
               // Redirect to the originally requested page, or to the home page
               this.$router.push(
                 this.$route.query.redirectFrom || { name: "home" }
               );
             }else{
-              this.notification.message = response.data.message;
+              this.notification.message = data.message;
               this.tryingToLogIn = false;
-              this.authError = response.data.message;
+              this.authError = data.message;
               this.isAuthError = true;
             }
           })
           .catch((error) => {
             console.log(error);            
-          });          
+          });
       }
     }
   }

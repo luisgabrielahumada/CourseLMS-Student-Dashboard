@@ -4,7 +4,8 @@ import { layoutComputed } from "@/state/helpers";
 
 import MetisMenu from "metismenujs/dist/metismenujs";
 
-import { menuItems } from "./menu";
+import { menuItems } from "./student";
+import axios from 'axios';
 // import axios from 'axios'
 
 export default {
@@ -111,7 +112,8 @@ export default {
     },
 
     logout(){
-      localStorage.removeItem('user');
+      localStorage.removeItem('access_token');
+      axios.defaults.headers.common['Authorization'] = "";
       this.$router.push({ name: 'login' })
     }
 

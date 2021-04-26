@@ -16,6 +16,10 @@ export default {
     return {
       title: "Home",
     };
+  },
+
+  created() {
+    console.log("access_token : ", this.$access_token);
   }
 };
 </script>

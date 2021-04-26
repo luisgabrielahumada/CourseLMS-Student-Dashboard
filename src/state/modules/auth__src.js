@@ -1,11 +1,7 @@
 import { getFirebaseBackend } from '../../helpers/firebase/authUtils'
 
 export const state = {
-    user: {
-        userName:'',
-        loggedInStatus: false,
-        authToken: ''
-    }
+    currentUser: sessionStorage.getItem('authUser'),
 }
 
 export const mutations = {
@@ -86,10 +82,6 @@ export const actions = {
         commit('SET_CURRENT_USER', user)
         return user;
     },
-
-    // setAccessToken({commit}, access_token = {}) {
-        
-    // }
 }
 
 // ===
@@ -99,13 +91,3 @@ export const actions = {
 function saveState(key, state) {
     window.localStorage.setItem(key, JSON.stringify(state))
 }
-
-// function getState(key) {
-//     let state = window.localStorage.getItem(key);
-//     try {
-//         state = JSON.parse(state);
-//     } catch (err) {
-//         state = state;
-//     }
-//     return state;
-// }
