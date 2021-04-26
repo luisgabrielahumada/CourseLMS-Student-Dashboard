@@ -15,6 +15,8 @@ export default {
     return {
       course: '',
       title: "Course Detail",
+      modal_title : '',
+      coupon_code : '',
     };
   },
 
@@ -26,6 +28,11 @@ export default {
     }
     const response = await axios.get(this.$api_host + 'course/detail', config);  // Load the data from your api url
     this.course = response.data.course;  // set the data
+
+    if(this.course.price < this.$current_user.balance)
+      this.modal_title = "Your current balance(" + this.balanceWithDollar() + ") is enough";
+    else 
+      this.modal_title = "Your current balance(" + this.balanceWithDollar() + ") is not enough";
   },
   
   methods: {
@@ -59,17 +66,76 @@ export default {
                         alt
                         class="img-fluid mx-auto d-block"
                       />
-                          
-                      <div class="row text-center mt-2">
-                        <button
-                          type="button"
-                          class="btn btn-light btn-block waves-effect mt-2 waves-light"
-                        >
-                          <i class="mdi mdi-shopping mr-2"></i>Buy now
-                        </button>
-                      </div>
                     </div>
                   </div>
+                </div>
+                    
+                <div class="row text-center mt-2 container_buy">
+                  <b-button v-b-modal.modal-center variant="primary" class="btn-block">
+                    <i class="mdi mdi-shopping mr-2"></i>Buy now
+                  </b-button>
+                  
+                  <b-modal header-class="modal-header-enough" id="modal-center" hide-footer 
+                    v-if='this.$current_user.balance >= course.price'>
+                    <template #modal-header>Your current balance ({{ balanceWithDollar() }}) is enough</template>
+                    <div class="text-center modal-content-buy">
+                      Direct payment from the balance
+                      <p>
+                        <button
+                          type="button"
+                          class="btn btn-primary waves-effect waves-light mt-3 mr-1"
+                        >
+                          Buy with Wallet
+                        </button>
+                      </p>
+                      Or with new Coupon Code
+                      <b-form-group
+                        id="example text"
+                        label-cols-sm="2"
+                        label-cols-lg="2"
+                        label="Coupon"
+                        label-for="coupon_code"
+                        class="mt-3"
+                      >
+                        <b-form-input for="coupon_code" v-model="coupon_code" placeholder="Enter Coupon code"></b-form-input>
+                      </b-form-group>
+                      <p>
+                        <button
+                          type="button"
+                          class="btn btn-primary waves-effect waves-light mt-3 mr-1"
+                        >
+                          Apply Coupon
+                        </button>
+                      </p>
+                    </div>
+                  </b-modal>
+
+                  <b-modal header-class="modal-header-less" id="modal-center" hide-footer 
+                    v-if='this.$current_user.balance < course.price'>
+                    <template #modal-header>Your current balance ({{ balanceWithDollar() }}) is  not enough</template>
+                      <div class="text-center modal-content-buy">
+                        Buy with new Coupon Code
+                        <b-form-group
+                          id="example text"
+                          label-cols-sm="2"
+                          label-cols-lg="2"
+                          label="Coupon"
+                          label-for="coupon_code"
+                          class="mt-3"
+                        >
+                          <b-form-input for="coupon_code" v-model="coupon_code" placeholder="Enter Coupon code"></b-form-input>
+                        </b-form-group>
+                        <p>
+                          <button
+                            type="button"
+                            class="btn btn-primary waves-effect waves-light mt-3 mr-1"
+                          >
+                            Apply Coupon
+                          </button>
+                        </p>
+                      </div>
+                  </b-modal>
+                  
                 </div>
                 <!-- end product img -->
               </div>
@@ -83,7 +149,7 @@ export default {
                   </h5>
                   <p
                     class="mt-3"
-                  v-html="course.short_description"></p>
+                    v-html="course.short_description"></p>
                   
                 </div>
               </div>
@@ -99,3 +165,27 @@ export default {
 
   </Layout>
 </template>
+
+<style>
+.btn_container{
+  justify-items: center;
+}
+
+.modal-header-enough{
+  background-color:#3848ca;
+  color:white;
+  font-size: large;
+}
+
+.modal-header-less{
+  background-color:#ff1741;
+  color:white;
+  font-size: large;
+}
+
+.modal-content-buy{
+  text-align: center;
+  padding:20px;
+  font-size:initial;
+}
+</style>

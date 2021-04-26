@@ -4,7 +4,7 @@ import { layoutComputed } from "@/state/helpers";
 
 import MetisMenu from "metismenujs/dist/metismenujs";
 
-import { menuItems } from "./student";
+import { menuItems } from "./menu";
 // import axios from 'axios'
 
 export default {
