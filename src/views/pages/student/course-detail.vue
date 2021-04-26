@@ -67,7 +67,19 @@ export default {
       
       axios.get(this.$api_host + 'course/buyWallet', config)
       .then((response) => {
-        console.log(response);
+        if(response.data.success){
+          this.$bvToast.toast(response.data.message, {
+            title: ``,
+            variant: 'primary',
+            solid: true
+          });
+        }else{
+          this.$bvToast.toast(response.data.message, {
+            title: ``,
+            variant: 'danger',
+            solid: true
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
