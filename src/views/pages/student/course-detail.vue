@@ -1,5 +1,6 @@
 <script>
 import Layout from "../../layouts/main";
+import appConfig from "@/app.config";
 import PageHeader from "@/components/page-header";
 import axios from 'axios'
 
@@ -7,6 +8,10 @@ import axios from 'axios'
  * Course Detail Component
  */
 export default {
+  page: {
+    title: "Course Detail",
+    meta: [{ name: "description", content: appConfig.description }]
+  },
   components: {
     Layout,
     PageHeader
@@ -127,9 +132,8 @@ export default {
                   <b-button v-b-modal.modal-center variant="primary" class="btn-block">
                     <i class="mdi mdi-shopping mr-2"></i>Buy now
                   </b-button>
-                  
                   <b-modal header-class="modal-header-enough" id="modal-center" hide-footer 
-                    v-if='this.$current_user.balance >= course.price'>
+                    v-if="Number(this.$current_user.balance) >= Number(course.price)">
                     <template #modal-header>Your current balance ({{ balanceWithDollar() }}) is enough</template>
                     <div class="text-center modal-content-buy">
                       Direct payment from the balance
@@ -164,8 +168,8 @@ export default {
                   </b-modal>
 
                   <b-modal header-class="modal-header-less" id="modal-center" hide-footer 
-                    v-if='this.$current_user.balance < course.price'>
-                    <template #modal-header>Your current balance ({{ balanceWithDollar() }}) is  not enough</template>
+                    v-else>
+                    <template #modal-header>Your current balance ({{ balanceWithDollar() }}) is not enough</template>
                       <div class="text-center modal-content-buy">
                         Buy with new Coupon Code
                         <b-form-group
