@@ -15,7 +15,6 @@ export default {
     return {
       course: '',
       title: "Course Detail",
-      modal_title : '',
       coupon_code : '',
     };
   },
@@ -28,11 +27,6 @@ export default {
     }
     const response = await axios.get(this.$api_host + 'course/detail', config);  // Load the data from your api url
     this.course = response.data.course;  // set the data
-
-    if(this.course.price < this.$current_user.balance)
-      this.modal_title = "Your current balance(" + this.balanceWithDollar() + ") is enough";
-    else 
-      this.modal_title = "Your current balance(" + this.balanceWithDollar() + ") is not enough";
   },
   
   methods: {
@@ -45,7 +39,7 @@ export default {
       expandImg.src = image;
     },
 
-    async applyCoupon(){
+    applyCoupon(){
       let config = {
         params: {
           course_id: this.course.id,
@@ -53,11 +47,28 @@ export default {
           user_id : this.$current_user.id
         },
       }
-      const response = await axios.post(this.$api_host + 'coupon/apply', config);  // Load the data from your api url
-      console.log(response);
+      axios.get(this.$api_host + 'coupon/apply', config)
+      .then((response) =>{
+        if(response.data.success){
+          this.$bvToast.toast(response.data.message, {
+            title: `Buy Course with Coupon`,
+            variant: 'primary',
+            solid: true
+          });
+          this.$current_user.balance = response.data.balance;
+        }else{
+          this.$bvToast.toast(response.data.message, {
+            title: `Buy Course with Coupon`,
+            variant: 'danger',
+            solid: true
+          });
+        }
+      }).catch((error) => {
+        console.log(error);
+      })
     },
 
-    async buyWithWallet(){
+    buyWithWallet(){
       let config = {
         params: {
           course_id: this.course.id,
@@ -69,13 +80,14 @@ export default {
       .then((response) => {
         if(response.data.success){
           this.$bvToast.toast(response.data.message, {
-            title: ``,
+            title: `Buy Course with Wallet`,
             variant: 'primary',
             solid: true
           });
+          this.$current_user.balance = response.data.balance;
         }else{
           this.$bvToast.toast(response.data.message, {
-            title: ``,
+            title: `Buy Course with Wallet`,
             variant: 'danger',
             solid: true
           });
