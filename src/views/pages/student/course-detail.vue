@@ -43,6 +43,35 @@ export default {
       const image = event.target.src;
       const expandImg = document.getElementById("expandedImg");
       expandImg.src = image;
+    },
+
+    async applyCoupon(){
+      let config = {
+        params: {
+          course_id: this.course.id,
+          code    : this.coupon_code,
+          user_id : this.$current_user.id
+        },
+      }
+      const response = await axios.post(this.$api_host + 'coupon/apply', config);  // Load the data from your api url
+      console.log(response);
+    },
+
+    async buyWithWallet(){
+      let config = {
+        params: {
+          course_id: this.course.id,
+          user_id : this.$current_user.id
+        },
+      }
+      
+      axios.get(this.$api_host + 'course/buyWallet', config)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     }
   }
 };
@@ -84,7 +113,7 @@ export default {
                         <button
                           type="button"
                           class="btn btn-primary waves-effect waves-light mt-3 mr-1"
-                        >
+                          v-on:click='buyWithWallet()'>
                           Buy with Wallet
                         </button>
                       </p>
@@ -103,7 +132,7 @@ export default {
                         <button
                           type="button"
                           class="btn btn-primary waves-effect waves-light mt-3 mr-1"
-                        >
+                          v-on:click='applyCoupon()'>
                           Apply Coupon
                         </button>
                       </p>
@@ -129,7 +158,7 @@ export default {
                           <button
                             type="button"
                             class="btn btn-primary waves-effect waves-light mt-3 mr-1"
-                          >
+                            v-on:click='applyCoupon()'>
                             Apply Coupon
                           </button>
                         </p>
