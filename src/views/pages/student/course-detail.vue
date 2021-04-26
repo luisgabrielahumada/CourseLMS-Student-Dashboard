@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      course: '',
+      course: undefined,
       title: "Course Detail",
       coupon_code : '',
     };
@@ -31,6 +31,7 @@ export default {
       },
     }
     const response = await axios.get(this.$api_host + 'course/detail', config);  // Load the data from your api url
+    console.log(response.data.course)
     this.course = response.data.course;  // set the data
   },
   
@@ -110,7 +111,7 @@ export default {
   <Layout>
     <PageHeader :title="title"/>
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-12" v-if="course">
         <div class="card">
           <div class="card-body">
             <div class="row">
@@ -216,6 +217,9 @@ export default {
           </div>
         </div>
         <!-- end card -->
+      </div>
+      <div class="col-lg-12" v-else>
+        Loading....
       </div>
     </div>
     <!-- end row -->
