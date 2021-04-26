@@ -47,7 +47,7 @@ export default {
             <div v-html="course.short_description">
             </div>
           </b-card-text>
-          <a :href="course.route" class="btn btn-primary btn-block">Course Detail</a>
+          <router-link :to='course.route' class="btn btn-primary btn-block">Course Detail</router-link>
         </b-card>
       </div>
       <!-- end col-->
