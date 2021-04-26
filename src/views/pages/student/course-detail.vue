@@ -21,6 +21,7 @@ export default {
       course: undefined,
       title: "Course Detail",
       coupon_code : '',
+      modal_buy : false
     };
   },
 
@@ -31,7 +32,6 @@ export default {
       },
     }
     const response = await axios.get(this.$api_host + 'course/detail', config);  // Load the data from your api url
-    console.log(response.data.course)
     this.course = response.data.course;  // set the data
   },
   
@@ -62,15 +62,19 @@ export default {
             solid: true
           });
           this.$current_user.balance = response.data.balance;
+          this.course.is_purchased = true;
+          this.closeBuyDialog();
         }else{
           this.$bvToast.toast(response.data.message, {
             title: `Buy Course with Coupon`,
             variant: 'danger',
             solid: true
           });
+          this.closeBuyDialog();
         }
       }).catch((error) => {
         console.log(error);
+        this.closeBuyDialog();
       })
     },
 
@@ -91,18 +95,26 @@ export default {
             solid: true
           });
           this.$current_user.balance = response.data.balance;
+          this.course.is_purchased = true;
+          this.closeBuyDialog();
         }else{
           this.$bvToast.toast(response.data.message, {
             title: `Buy Course with Wallet`,
             variant: 'danger',
             solid: true
           });
+          this.closeBuyDialog();
         }
       })
       .catch((error) => {
         console.log(error);
+        this.closeBuyDialog();
       });
-    }
+    },
+
+    closeBuyDialog() {
+      this.modal_buy = false;
+    },
   }
 };
 </script>
@@ -115,7 +127,7 @@ export default {
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <div class="col-xl-5">
+              <div class="col-lg-4">
                 <div class="product-detail">
                   <div class="row">                    
                     <div class="product-img">
@@ -129,11 +141,11 @@ export default {
                   </div>
                 </div>
                     
-                <div class="row text-center mt-2 container_buy">
-                  <b-button v-b-modal.modal-center variant="primary" class="btn-block">
+                <div class="row text-center mt-2 container_buy" v-if='!course.is_purchased'>
+                  <b-button v-b-modal.modal-buy variant="primary" class="btn-block">
                     <i class="mdi mdi-shopping mr-2"></i>Buy now
                   </b-button>
-                  <b-modal header-class="modal-header-enough" id="modal-center" hide-footer 
+                  <b-modal header-class="modal-header-enough" v-model="modal_buy" title-class="font-18" id="modal-buy" hide-footer 
                     v-if="Number(this.$current_user.balance) >= Number(course.price)">
                     <template #modal-header>Your current balance ({{ balanceWithDollar() }}) is enough</template>
                     <div class="text-center modal-content-buy">
@@ -168,7 +180,7 @@ export default {
                     </div>
                   </b-modal>
 
-                  <b-modal header-class="modal-header-less" id="modal-center" hide-footer 
+                  <b-modal header-class="modal-header-less" id="modal-buy" hide-footer 
                     v-else>
                     <template #modal-header>Your current balance ({{ balanceWithDollar() }}) is not enough</template>
                       <div class="text-center modal-content-buy">
@@ -197,7 +209,7 @@ export default {
                 </div>
                 <!-- end product img -->
               </div>
-              <div class="col-xl-7">
+              <div class="col-lg-4">
                 <div class="mt-4 mt-xl-3">
                   <a href="#" class="text-primary">{{course.category.name}}</a>
                   <h5 class="mt-1 mb-3">{{course.title}}</h5>
@@ -208,7 +220,35 @@ export default {
                   <p
                     class="mt-3"
                     v-html="course.short_description"></p>
-                  
+                  <p class="card-title-desc alert alert-danger">{{course.requirement}}</p>
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="">
+                  <div class="card-body">
+                    <h4 class="card-title">Classes</h4>
+                    <div role="tablist">
+                      <b-card no-body class="mb-1 shadow-none" v-for='classItem in course.classes' :key='classItem.id'>
+                        <b-card-header header-tag="header" role="tab">
+                          <h6 class="m-0">
+                            <a
+                              v-b-toggle.{{classItem.title}}
+                              class="text-dark"
+                              href="javascript: void(0);"
+                            >{{ classItem.title }}</a>
+                          </h6>
+                        </b-card-header>
+                        <b-collapse :id='classItem.title' visible accordion="my-accordion" role="tabpanel">
+                          <b-card-body v-for='content in classItem.contents' :key='content.id'>
+                            <b-card-text>{{content.title}} : {{ formatDuration(content.duration)}} 
+                              <b-button href="javascript:void(0);" variant="primary" class="btn-watch btn-sm">Watch</b-button>
+                            </b-card-text>
+                          </b-card-body>
+                        </b-collapse>
+                      </b-card>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -248,5 +288,9 @@ export default {
   text-align: center;
   padding:20px;
   font-size:initial;
+}
+
+.btn-watch{
+  float:left;
 }
 </style>

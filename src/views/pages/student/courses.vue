@@ -37,7 +37,7 @@ export default {
 <template>
   <Layout>
     <PageHeader :title="title"/>
-    <div class="row">
+    <div class="row" v-if='courses'>
       <div v-for="course in courses" :key="course.id" class="col-lg-3 col-md-4 col-sm-6">
         <b-card :img-src="course.image" img-alt="Course image" img-top>
           <b-card-title>
@@ -55,7 +55,10 @@ export default {
       <div v-if='courses.sizeof == 0'>
         <h4 class="card-title">There are no courses.</h4>
       </div>
+    </div>
 
+    <div class="row" v-else>
+      Loading....
     </div>
     <!-- end row -->
 
