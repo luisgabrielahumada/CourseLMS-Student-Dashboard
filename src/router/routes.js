@@ -141,6 +141,15 @@ export default [
     },
 
     {
+        path: '/possell',
+        name: 'possell',
+        meta: {
+            authRequired: true,
+        },
+        component: () => import('../views/pages/student/possell')
+    },
+
+    {
         path: '/chat',
         name: 'Chat',
         meta: {
