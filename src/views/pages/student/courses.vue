@@ -26,11 +26,18 @@ export default {
         category_id : this.$route.params.category,
       },
     }
-    const response = await axios.get(this.$api_host + 'teacher/courses', config);  // Load the data from your api url
-    this.courses = response.data.courses;  // set the data
-    this.courses.forEach(course => {
-      course.route = '/course-detail/' + course.id;
-    });
+    axios.get(this.$api_host + 'teacher/courses', config)
+    .then((response) => {
+      this.courses = response.data.courses;  // set the data
+      this.courses.forEach(course => {
+        course.route = '/course-detail/' + course.id;
+      });
+    })
+    .catch((error)=>{
+      if (error.response && error.response.status == 401){
+        this.$router.push({ name: 'login' })  
+      }
+    })
   }
 };
 </script>

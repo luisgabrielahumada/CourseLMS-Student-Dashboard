@@ -19,19 +19,26 @@ export default {
     };
   },
 
-  async created() {
+  created() {
     var teacher_id = this.$route.params.teacher;
     let config = {
       params: {
         teacher_id: teacher_id
       },
     }
-    const response = await axios.get(this.$api_host + 'all/categories', config);  // Load the data from your api url
-    
-    this.categories = response.data.categories;  // set the data
-    this.categories.forEach(category => {
-      category.route = '/courses/' + teacher_id + '/' + category.id;
-    });
+
+    axios.get(this.$api_host + 'all/categories', config)
+    .then((response) =>{
+      this.categories = response.data.categories;  // set the data
+      this.categories.forEach(category => {
+        category.route = '/courses/' + teacher_id + '/' + category.id;
+      });
+    })
+    .catch((error)=>{
+      if (error.response && error.response.status == 401){
+        this.$router.push({ name: 'login' })  
+      }
+    })
   }
 };
 </script>
@@ -46,7 +53,7 @@ export default {
           </b-card-title>
           <router-link
                 :to='category.route'
-                class="btn btn-primary btn-block">Categories</router-link>
+                class="btn btn-primary btn-block">Courses</router-link>
         </b-card>
       </div>
       <!-- end col -->

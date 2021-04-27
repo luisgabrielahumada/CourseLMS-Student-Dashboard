@@ -27,10 +27,8 @@ export default {
         teacher.route_url = '/categories/' + teacher.user_id;
       });
     }).catch((error)=>{
-      if (error.response) {
-        if(error.response.status == 401){
-          this.$router.push({ name: 'login' })
-        }
+      if (error.response && error.response.status == 401){
+        this.$router.push({ name: 'login' })  
       }
     })
   }

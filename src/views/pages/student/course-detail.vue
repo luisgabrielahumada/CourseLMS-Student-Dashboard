@@ -25,14 +25,22 @@ export default {
     };
   },
 
-  async created() {
+  created() {
     let config = {
       params: {
         course_id: this.$route.params.course,
       },
     }
-    const response = await axios.get(this.$api_host + 'course/detail', config);  // Load the data from your api url
-    this.course = response.data.course;  // set the data
+    axios.get(this.$api_host + 'course/detail', config)
+    .then((response) => {
+      this.course = response.data.course;
+    })
+    .catch((error)=>{
+      this.closeBuyDialog();
+      if (error.response && error.response.status == 401){
+        this.$router.push({ name: 'login' })  
+      }
+    })
   },
   
   methods: {
@@ -53,7 +61,7 @@ export default {
           user_id : this.$current_user.id
         },
       }
-      axios.get(this.$api_host + 'coupon/apply', config)
+      axios.post(this.$api_host + 'coupon/apply', config)
       .then((response) =>{
         if(response.data.success){
           this.$bvToast.toast(response.data.message, {
@@ -72,9 +80,11 @@ export default {
           });
           this.closeBuyDialog();
         }
-      }).catch((error) => {
-        console.log(error);
+      }).catch((error)=>{
         this.closeBuyDialog();
+        if (error.response && error.response.status == 401){
+          this.$router.push({ name: 'login' })  
+        }
       })
     },
 
@@ -86,7 +96,7 @@ export default {
         },
       }
       
-      axios.get(this.$api_host + 'course/buyWallet', config)
+      axios.post(this.$api_host + 'course/buyWallet', config)
       .then((response) => {
         if(response.data.success){
           this.$bvToast.toast(response.data.message, {
@@ -106,10 +116,12 @@ export default {
           this.closeBuyDialog();
         }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((error)=>{
         this.closeBuyDialog();
-      });
+        if (error.response && error.response.status == 401){
+          this.$router.push({ name: 'login' })  
+        }
+      })
     },
 
     closeBuyDialog() {
@@ -141,7 +153,7 @@ export default {
                   </div>
                 </div>
                     
-                <div class="row text-center mt-2 container_buy" v-if='!course.is_purchased'>
+                <div class="row text-center mt-2 container_buy" v-if='!course.enrollment_id'>
                   <b-button v-b-modal.modal-buy variant="primary" class="btn-block">
                     <i class="mdi mdi-shopping mr-2"></i>Buy now
                   </b-button>
@@ -242,7 +254,7 @@ export default {
                         <b-collapse :id='classItem.title' visible accordion="my-accordion" role="tabpanel">
                           <b-card-body v-for='content in classItem.contents' :key='content.id'>
                             <b-card-text>{{content.title}} : {{ formatDuration(content.duration)}} 
-                              <b-button href="javascript:void(0);" variant="primary" class="btn-watch btn-sm">Watch</b-button>
+                              <b-button href="javascript:void(0);" variant="primary" class="btn-watch btn-sm" v-if='course.enrollment_id'>Watch</b-button>
                             </b-card-text>
                           </b-card-body>
                         </b-collapse>
