@@ -55,11 +55,8 @@ export default {
 
     applyCoupon(){
       let config = {
-        params: {
-          course_id: this.course.id,
-          code    : this.coupon_code,
-          user_id : this.$current_user.id
-        },
+        course_id: this.course.id,
+        code    : this.coupon_code,
       }
       axios.post(this.$api_host + 'coupon/apply', config)
       .then((response) =>{
@@ -70,7 +67,7 @@ export default {
             solid: true
           });
           this.$current_user.balance = response.data.balance;
-          this.course.is_purchased = true;
+          this.course.enrollment_id = response.data.enrollment_id;          
           this.closeBuyDialog();
         }else{
           this.$bvToast.toast(response.data.message, {
@@ -90,12 +87,9 @@ export default {
 
     buyWithWallet(){
       let config = {
-        params: {
-          course_id: this.course.id,
-          user_id : this.$current_user.id
-        },
+        course_id: this.course.id
       }
-      
+
       axios.post(this.$api_host + 'course/buyWallet', config)
       .then((response) => {
         if(response.data.success){
@@ -105,7 +99,7 @@ export default {
             solid: true
           });
           this.$current_user.balance = response.data.balance;
-          this.course.is_purchased = true;
+          this.course.enrollment_id = response.data.enrollment_id;
           this.closeBuyDialog();
         }else{
           this.$bvToast.toast(response.data.message, {
@@ -127,6 +121,13 @@ export default {
     closeBuyDialog() {
       this.modal_buy = false;
     },
+
+    playVideoPC(data){
+      var element = document.createElement('a');
+      // element.setAttribute('href', 'iqacademyplayer://video/?url=' + data);
+      element.setAttribute('href', 'courselmsvideoplayer://video/?user=' + this.$current_user.id + '&class=' + data);
+      element.click();
+    }
   }
 };
 </script>
@@ -254,7 +255,7 @@ export default {
                         <b-collapse :id='classItem.title' visible accordion="my-accordion" role="tabpanel">
                           <b-card-body v-for='content in classItem.contents' :key='content.id'>
                             <b-card-text>{{content.title}} {{ formatDuration(content.duration)}} 
-                              <b-button href="javascript:void(0);" variant="primary" class="btn-watch btn-sm" v-if='course.enrollment_id'>Watch</b-button>
+                              <b-button v-on:click="playVideoPC(content.id)" variant="primary" class="btn-watch btn-sm" v-if='course.enrollment_id'>Watch</b-button>
                             </b-card-text>
                           </b-card-body>
                         </b-collapse>
