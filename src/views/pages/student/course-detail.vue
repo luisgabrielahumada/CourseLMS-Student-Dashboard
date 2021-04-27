@@ -253,7 +253,7 @@ export default {
                         </b-card-header>
                         <b-collapse :id='classItem.title' visible accordion="my-accordion" role="tabpanel">
                           <b-card-body v-for='content in classItem.contents' :key='content.id'>
-                            <b-card-text>{{content.title}} : {{ formatDuration(content.duration)}} 
+                            <b-card-text>{{content.title}} {{ formatDuration(content.duration)}} 
                               <b-button href="javascript:void(0);" variant="primary" class="btn-watch btn-sm" v-if='course.enrollment_id'>Watch</b-button>
                             </b-card-text>
                           </b-card-body>

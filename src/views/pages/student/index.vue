@@ -2,6 +2,7 @@
 import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
 import PageHeader from "@/components/page-header";
+import axios from 'axios'
 
 /**
  * Cards component
@@ -18,8 +19,13 @@ export default {
     };
   },
 
-  created() {
-    console.log("access_token : ", this.$access_token);
+  created(){
+    axios.get(this.$api_host + 'user/checkAuth')
+    .catch((error)=>{
+      if (error.response && error.response.status == 401){
+        this.$router.push({ name: 'login' })  
+      }
+    })
   }
 };
 </script>
