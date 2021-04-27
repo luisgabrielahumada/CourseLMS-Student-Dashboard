@@ -123,6 +123,15 @@ export default [
     },
 
     {
+        path: '/wallet',
+        name: 'wallet',
+        meta: {
+            authRequired: true,
+        },
+        component: () => import('../views/pages/student/wallet')
+    },
+
+    {
         path: '/chat',
         name: 'Chat',
         meta: {

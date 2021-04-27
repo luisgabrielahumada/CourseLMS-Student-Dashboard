@@ -8,11 +8,6 @@ export default {
   },
   data() {
     return {
-      wallet_url: this.$host + 'student/profile', 
-      mycourses_url: this.$host + '/mycourses',
-      messages_url : this.$host + 'student/message',
-      discover_url : this.$host,
-      possell_url : this.$host,
     };
   },
 };
@@ -24,31 +19,29 @@ export default {
       <div class="row">
         <div class="col-sm-12 button-container">
           
-          <router-link
-                to="/">
+          <router-link to="/">
                 <b-button variant="warning"><i class="ri-home-4-fill align-middle icon"></i><div class="icon-title">Home</div></b-button>
           </router-link>
 
-          <a :href='wallet_url'>
+          <router-link to="/wallet">
                 <b-button variant="warning"><i class="ri-wallet-3-fill align-middle icon"></i><div class="icon-title">Wallet</div></b-button>
-          </a>
+          </router-link>
 
           <router-link to="/mycourses">
                 <b-button variant="warning"><i class=" ri-play-circle-fill align-middle icon"></i><div class="icon-title">My Courses</div></b-button>
           </router-link>
 
-          <a :href='messages_url'>
-                <b-button variant="warning"><i class="ri-notification-4-fill align-middle icon"></i><div class="icon-title">Messages</div></b-button>
-          </a>
+          <router-link to="/notifications">
+                <b-button variant="warning"><i class="ri-notification-4-fill align-middle icon"></i><div class="icon-title">Notifications</div></b-button>
+          </router-link>
 
-          <a :href='discover_url'>
+          <router-link to="/discover">
                 <b-button variant="warning"><i class=" ri-search-2-fill align-middle icon"></i><div class="icon-title">Discover</div></b-button>
-          </a>
+          </router-link>
 
-          <a :href='possell_url'>
+          <router-link to="/possell">
                 <b-button variant="warning"><i class=" ri-shopping-bag-fill align-middle icon"></i><div class="icon-title">POS Sell</div></b-button>
-          </a>
-
+          </router-link>
         </div>
       </div>
     </div>
