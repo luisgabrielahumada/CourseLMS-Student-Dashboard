@@ -66,7 +66,7 @@ export default {
             variant: 'primary',
             solid: true
           });
-          this.$current_user.balance = response.data.balance;
+          this.downloadUserDetail();
           this.course.enrollment_id = response.data.enrollment_id;          
           this.closeBuyDialog();
         }else{
@@ -98,7 +98,7 @@ export default {
             variant: 'primary',
             solid: true
           });
-          this.$current_user.balance = response.data.balance;
+          this.downloadUserDetail();
           this.course.enrollment_id = response.data.enrollment_id;
           this.closeBuyDialog();
         }else{

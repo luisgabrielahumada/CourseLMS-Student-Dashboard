@@ -128,8 +128,9 @@ export default {
           });
         }
       });
-      
+
       localStorage.removeItem('access_token');
+      localStorage.removeItem('user');
       axios.defaults.headers.common['Authorization'] = "";
       this.$router.push({ name: 'login' })
     }
@@ -217,7 +218,7 @@ export default {
           <img :src='user.image' alt class="rounded-circle avatar-md mb-4" />
           <b-card-title>
             <h5 class="sidebar-text">{{ user.name }}</h5>
-            <h5 class="sidebar-text">Balance : {{ balanceWithDollar() }}</h5>
+            <h5 class="sidebar-text">Balance : {{this.balanceWithDollar()}}</h5>
           </b-card-title>
         </div>
 

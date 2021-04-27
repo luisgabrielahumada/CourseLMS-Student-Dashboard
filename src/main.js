@@ -70,11 +70,11 @@ new Vue({
 
 
 // Global Variables
-// Vue.prototype.$api_host = 'http://127.0.0.1/api/v1/student/';
-// Vue.prototype.$host     = 'http://127.0.0.1/';
+Vue.prototype.$api_host = 'http://127.0.0.1/api/v1/student/';
+Vue.prototype.$host     = 'http://127.0.0.1/';
 
-Vue.prototype.$api_host = 'http://lms.olmaa.net/api/v1/student/';
-Vue.prototype.$host     = 'http://lms.olmaa.net/';
+// Vue.prototype.$api_host = 'http://lms.olmaa.net/api/v1/student/';
+// Vue.prototype.$host     = 'http://lms.olmaa.net/';
 
 
 const loggeduser = localStorage.getItem('user');
@@ -120,6 +120,19 @@ Vue.mixin({
       if (minutes < 10) {minutes = "0"+minutes;}
       if (seconds < 10) {seconds = "0"+seconds;}
       return hours+':'+minutes+':'+seconds;
+    },
+
+    downloadUserDetail(){
+      axios.get(this.$api_host + 'user/detail')
+      .then((response) => {
+        if(response.data.success){
+          this.$current_user.balance = response.data.detail.balance;
+          localStorage.setItem('user', JSON.stringify(this.$current_user));
+        }
+      }).catch((error) => {
+        console.log(error);
+      });
+
     }
   }
 });
