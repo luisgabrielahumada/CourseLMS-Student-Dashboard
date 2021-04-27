@@ -6,7 +6,6 @@ import MetisMenu from "metismenujs/dist/metismenujs";
 
 import { menuItems } from "./student";
 import axios from 'axios';
-// import axios from 'axios'
 
 export default {
   components: {
@@ -30,6 +29,8 @@ export default {
     return {
       menuItems: menuItems,
       user: '',
+      coupon_code : '',
+      modal_charge : false,
     };
   },
   computed: {
@@ -133,8 +134,42 @@ export default {
       localStorage.removeItem('user');
       axios.defaults.headers.common['Authorization'] = "";
       this.$router.push({ name: 'login' })
-    }
+    },
 
+    charge(){
+      let url = this.$api_host + 'charge';
+      let config = {
+        code    : this.coupon_code,
+      }
+      axios.post(url, config)
+      .then((response) =>{
+        if(response.data.success){
+          this.$bvToast.toast(response.data.message, {
+            title: `Charge`,
+            variant: 'primary',
+            solid: true
+          });
+          this.downloadUserDetail();
+          this.closeChargeDialog();
+        }else{
+          this.$bvToast.toast(response.data.message, {
+            title: `Charge`,
+            variant: 'danger',
+            solid: true
+          });
+          this.closeChargeDialog();
+        }
+      }).catch((error)=>{
+        this.closeChargeDialog();
+        if (error.response && error.response.status == 401){
+          this.$router.push({ name: 'login' })  
+        }
+      })
+    },
+
+    closeChargeDialog(){
+      this.modal_charge = false;
+    }
   },
   watch: {
     $route: {
@@ -218,9 +253,33 @@ export default {
           <img :src='user.image' alt class="rounded-circle avatar-md mb-4" />
           <b-card-title>
             <h5 class="sidebar-text">{{ user.name }}</h5>
-            <h5 class="sidebar-text">Balance : {{this.balanceWithDollar()}}</h5>
+            <h5 class="sidebar-text" v-b-modal.modal-charge variant="primary">Balance : {{this.balanceWithDollar()}}</h5>
           </b-card-title>
         </div>
+
+        <b-modal id="modal-charge" title="Charge" v-model='modal_charge' title-class="font-18" hide-footer >
+          <b-card-body class="text-center">
+            <h3>Top up coint</h3>
+            <b-form-group
+              id="example text"
+              label-cols-sm="2"
+              label-cols-lg="2"
+              label="Coupon"
+              label-for="coupon_code"
+              class="mt-3"
+            >
+              <b-form-input for="coupon_code" v-model="coupon_code" placeholder="Enter Coupon code"></b-form-input>
+            </b-form-group>
+            <p>
+              <button
+                type="button"
+                class="btn btn-primary waves-effect waves-light mt-3 mr-1"
+                v-on:click='charge()'>
+                Charge
+              </button>
+            </p>
+          </b-card-body>
+        </b-modal>
 
 
         <ul class="metismenu list-unstyled" id="side-menu">
