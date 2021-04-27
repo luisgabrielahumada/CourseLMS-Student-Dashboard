@@ -77,7 +77,9 @@ export default {
     },
 
     searchCourse(){
-      window.location = `/courses/0/${this.search}`;
+      this.$router.push({
+        path: `/courses/0/${this.search}`
+      });
     }
   },
 
