@@ -32,7 +32,8 @@ export default {
           title: "Arabic"
         }
       ],
-      current_language: "en"
+      current_language: "en",
+      search : '',
     };
   },
   components: { simplebar },
@@ -73,7 +74,16 @@ export default {
     setLanguage(locale) {
       i18n.locale = locale;
       this.current_language = i18n.locale;
+    },
+
+    searchCourse(){
+      window.location = `/courses/0/${this.search}`;
     }
+  },
+
+  created(){
+    if(this.$route.name  == "Courses" && this.$route.params.teacher == 0)
+      this.search = this.$route.params.category;
   }
 };
 </script>
@@ -113,9 +123,9 @@ export default {
         </button>
 
         <!-- App Search-->
-        <form class="app-search d-none d-lg-block">
+        <form class="app-search d-none d-lg-block" v-on:submit.prevent="searchCourse">
           <div class="position-relative">
-            <input type="text" class="form-control" :placeholder="$t('navbar.search.text')" />
+            <input type="text" class="form-control" :placeholder="$t('navbar.search.text')" v-model='search'/>
             <span class="ri-search-line"></span>
           </div>
         </form>

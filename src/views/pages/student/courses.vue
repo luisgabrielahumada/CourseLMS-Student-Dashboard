@@ -20,12 +20,25 @@ export default {
   },
 
   async mounted() {
-    let config = {
-      params: {
-        teacher_id: this.$route.params.teacher,
-        category_id : this.$route.params.category,
-      },
+    let teacher_id = this.$route.params.teacher;
+    var config;
+
+    if(teacher_id !=0) 
+      config = {
+        params: {
+          teacher_id: teacher_id,
+          category_id : this.$route.params.category,
+        },
+      }
+    else{
+      config = {
+        params: {
+          teacher_id: teacher_id,
+          search : this.$route.params.category,
+        },
+      }
     }
+
     axios.get(this.$api_host + 'teacher/courses', config)
     .then((response) => {
       this.courses = response.data.courses;  // set the data
@@ -58,8 +71,8 @@ export default {
         </b-card>
       </div>
       <!-- end col-->
-
-      <div v-if='courses.sizeof == 0'>
+      
+      <div v-if='courses.length == 0'>
         <h4 class="card-title">There are no courses.</h4>
       </div>
     </div>
