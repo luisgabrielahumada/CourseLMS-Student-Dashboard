@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       wallet_url: this.$host + 'student/profile', 
-      mycourses_url: this.$host + 'my/courses',
+      mycourses_url: this.$host + '/mycourses',
       messages_url : this.$host + 'student/message',
       discover_url : this.$host,
       possell_url : this.$host,
@@ -33,9 +33,9 @@ export default {
                 <b-button variant="warning"><i class="ri-wallet-3-fill align-middle icon"></i><div class="icon-title">Wallet</div></b-button>
           </a>
 
-          <a :href='mycourses_url'>
+          <router-link to="/mycourses">
                 <b-button variant="warning"><i class=" ri-play-circle-fill align-middle icon"></i><div class="icon-title">My Courses</div></b-button>
-          </a>
+          </router-link>
 
           <a :href='messages_url'>
                 <b-button variant="warning"><i class="ri-notification-4-fill align-middle icon"></i><div class="icon-title">Messages</div></b-button>

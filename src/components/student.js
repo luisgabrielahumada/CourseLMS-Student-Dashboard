@@ -14,9 +14,9 @@ export const menuItems = [
     },
     {
         id: 4,
-        label: 'Free Courses',
+        label: 'My Courses',
         icon: 'ri-play-line',
-        link: '/courses/0/0'
+        link: '/mycourses'
     },
        
     {
