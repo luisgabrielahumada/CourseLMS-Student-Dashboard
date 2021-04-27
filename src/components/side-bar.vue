@@ -112,6 +112,23 @@ export default {
     },
 
     logout(){
+      axios.post(this.$api_host + 'logout')
+      .then((response) => {
+        if(response.data.success){
+          this.$bvToast.toast(response.data.message, {
+            title: `Logout`,
+            variant: 'primary',
+            solid: true
+          });
+        }else{
+          this.$bvToast.toast("Error Occurred", {
+            title: `Logout`,
+            variant: 'danger',
+            solid: true
+          });
+        }
+      });
+      
       localStorage.removeItem('access_token');
       axios.defaults.headers.common['Authorization'] = "";
       this.$router.push({ name: 'login' })
