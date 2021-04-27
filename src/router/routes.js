@@ -132,6 +132,15 @@ export default [
     },
 
     {
+        path: '/discover',
+        name: 'discover',
+        meta: {
+            authRequired: true,
+        },
+        component: () => import('../views/pages/student/discover')
+    },
+
+    {
         path: '/chat',
         name: 'Chat',
         meta: {
