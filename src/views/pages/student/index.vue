@@ -36,7 +36,7 @@ export default {
     <div class="row">
       <div class="col-lg-6 col-xl-3">
         <!-- Simple card -->
-        <b-card>
+        <b-card class="text-center">
           <img
             class="rounded-circle mr-2"
             alt=""
@@ -54,7 +54,7 @@ export default {
 
       <div class="col-lg-6 col-xl-3">
         <!-- Simple card -->
-        <b-card>
+        <b-card class="text-center">
           <img
               class="rounded-circle mr-2"
               alt=""
@@ -72,7 +72,7 @@ export default {
 
       <div class="col-lg-6 col-xl-3">
         <!-- Simple card -->
-        <b-card>
+        <b-card class="text-center">
           <img
               class="rounded-circle mr-2"
               alt=""
@@ -90,7 +90,7 @@ export default {
 
       <div class="col-lg-6 col-xl-3">
         <!-- Simple card -->
-        <b-card>
+        <b-card class="text-center">
           <img
               class="rounded-circle mr-2"
               alt=""
