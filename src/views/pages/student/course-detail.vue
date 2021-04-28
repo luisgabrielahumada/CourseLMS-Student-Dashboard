@@ -227,7 +227,7 @@ export default {
                   <a href="#" class="text-primary">{{course.category.name}}</a>
                   <h5 class="mt-1 mb-3">{{course.title}}</h5>
 
-                  <h5 class="mt-2">
+                  <h5 class="mt-2" v-if='!course.is_private'>
                     {{ convertWithDollar(course.price)}}
                   </h5>
                   <p
