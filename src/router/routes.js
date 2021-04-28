@@ -150,6 +150,15 @@ export default [
     },
 
     {
+        path: '/notifications',
+        name: 'notifications',
+        meta: {
+            authRequired: true,
+        },
+        component: () => import('../views/pages/student/notifications')
+    },
+
+    {
         path: '/chat',
         name: 'Chat',
         meta: {

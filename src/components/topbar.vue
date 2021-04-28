@@ -181,7 +181,7 @@ export default {
                 <h6 class="m-0">{{ $t('navbar.dropdown.notification.text')}}</h6>
               </div>
               <div class="col-auto">
-                <a href="#!" class="small">{{ $t('navbar.dropdown.notification.subtext')}}</a>
+                <router-link to="/notifications" class="small">{{ $t('navbar.dropdown.notification.subtext')}}</router-link>
               </div>
             </div>
           </div>

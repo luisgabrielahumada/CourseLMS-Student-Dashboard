@@ -10,7 +10,7 @@ export const menuItems = [
         id: 3,
         label: 'Notifications',
         icon: ' ri-notification-4-line',
-        link: '/'
+        link: '/notifications'
     },
     {
         id: 4,
