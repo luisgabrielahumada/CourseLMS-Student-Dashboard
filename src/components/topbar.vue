@@ -1,6 +1,7 @@
 <script>
 import simplebar from "simplebar-vue";
 import i18n from "../i18n";
+import axios from 'axios';
 
 export default {
   data() {
@@ -34,6 +35,7 @@ export default {
       ],
       current_language: "en",
       search : '',
+      notifications : []
     };
   },
   components: { simplebar },
@@ -86,6 +88,24 @@ export default {
   created(){
     if(this.$route.name  == "Courses" && this.$route.params.teacher == 0)
       this.search = this.$route.params.category;
+
+    let config = {
+      params: {
+        is_read: false
+      },
+    }
+    axios.get(this.$api_host + 'user/notifications', config)
+      .then((response) => {
+        this.notifications = response.data.notifications;
+        this.notifications.forEach(element => {
+          element.time = this.toUTCDate(element.created_at);
+          console.log(element.time);
+        });
+      }).catch((error) => {
+        if (error.response && error.response.status == 401){
+          this.$router.push({ name: 'login' })  
+        }
+      });
   }
 };
 </script>
@@ -186,94 +206,22 @@ export default {
             </div>
           </div>
           <simplebar style="max-height: 230px;">
-            <a href class="text-reset notification-item">
+            
+            <a href class="text-reset notification-item" v-for='notification in notifications' :key="notification.id">
               <div class="media">
-                <div class="avatar-xs mr-3">
-                  <span class="avatar-title bg-primary rounded-circle font-size-16">
-                    <i class="ri-shopping-cart-line"></i>
-                  </span>
-                </div>
                 <div class="media-body">
-                  <h6 class="mt-0 mb-1">{{ $t('navbar.dropdown.notification.order.title')}}</h6>
+                  <h6 class="mt-0 mb-1">{{ notification.data["body"]}}</h6>
                   <div class="font-size-12 text-muted">
-                    <p class="mb-1">{{ $t('navbar.dropdown.notification.order.text')}}</p>
                     <p class="mb-0">
                       <i class="mdi mdi-clock-outline"></i>
-                      {{ $t('navbar.dropdown.notification.order.time')}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href class="text-reset notification-item">
-              <div class="media">
-                <img
-                  src="@/assets/images/users/avatar-3.jpg"
-                  class="mr-3 rounded-circle avatar-xs"
-                  alt="user-pic"
-                />
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1">{{ $t('navbar.dropdown.notification.james.title')}}</h6>
-                  <div class="font-size-12 text-muted">
-                    <p class="mb-1">{{ $t('navbar.dropdown.notification.james.text')}}</p>
-                    <p class="mb-0">
-                      <i class="mdi mdi-clock-outline"></i>
-                      {{ $t('navbar.dropdown.notification.james.time')}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href class="text-reset notification-item">
-              <div class="media">
-                <div class="avatar-xs mr-3">
-                  <span class="avatar-title bg-success rounded-circle font-size-16">
-                    <i class="ri-checkbox-circle-line"></i>
-                  </span>
-                </div>
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1">{{ $t('navbar.dropdown.notification.item.title')}}</h6>
-                  <div class="font-size-12 text-muted">
-                    <p class="mb-1">{{ $t('navbar.dropdown.notification.item.text')}}</p>
-                    <p class="mb-0">
-                      <i class="mdi mdi-clock-outline"></i>
-                      {{ $t('navbar.dropdown.notification.item.time')}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <a href class="text-reset notification-item">
-              <div class="media">
-                <img
-                  src="@/assets/images/users/avatar-4.jpg"
-                  class="mr-3 rounded-circle avatar-xs"
-                  alt="user-pic"
-                />
-                <div class="media-body">
-                  <h6 class="mt-0 mb-1">{{ $t('navbar.dropdown.notification.salena.title')}}</h6>
-                  <div class="font-size-12 text-muted">
-                    <p class="mb-1">{{ $t('navbar.dropdown.notification.salena.text')}}</p>
-                    <p class="mb-0">
-                      <i class="mdi mdi-clock-outline"></i>
-                      {{ $t('navbar.dropdown.notification.salena.time')}}
+                      {{ notification.time}}
                     </p>
                   </div>
                 </div>
               </div>
             </a>
           </simplebar>
-          <div class="p-2 border-top">
-            <a
-              class="btn btn-sm btn-link font-size-14 btn-block text-center"
-              href="javascript:void(0)"
-            >
-              <i class="mdi mdi-arrow-right-circle mr-1"></i>
-              {{ $t('navbar.dropdown.notification.button')}}
-            </a>
-          </div>
         </b-dropdown>
-
         
         <div class="dropdown d-inline-block">
           <button
@@ -296,7 +244,7 @@ export default {
   }
 }
 
-@media (min-width: 450px){
+@media (min-width: 332px){
   .d-lg-block {
       display: block !important;
   }

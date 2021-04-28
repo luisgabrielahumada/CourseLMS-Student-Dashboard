@@ -34,14 +34,6 @@ export default {
         },
       ],
       search_data : '',
-      markers: [
-        {
-          position: { lat: 10.0, lng: 10.0 }
-        },
-        {
-          position: { lat: 15.0, lng: 13.0 }
-        }
-      ],
     };
   },
 

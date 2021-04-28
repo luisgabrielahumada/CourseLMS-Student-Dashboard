@@ -70,11 +70,11 @@ new Vue({
 
 
 // Global Variables
-// Vue.prototype.$api_host = 'http://127.0.0.1/api/v1/student/';
-// Vue.prototype.$host     = 'http://127.0.0.1/';
+Vue.prototype.$api_host = 'http://127.0.0.1/api/v1/student/';
+Vue.prototype.$host     = 'http://127.0.0.1/';
 
-Vue.prototype.$api_host = 'http://lms.olmaa.net/api/v1/student/';
-Vue.prototype.$host     = 'http://lms.olmaa.net/';
+// Vue.prototype.$api_host = 'http://lms.olmaa.net/api/v1/student/';
+// Vue.prototype.$host     = 'http://lms.olmaa.net/';
 
 
 const loggeduser = localStorage.getItem('user');
@@ -93,6 +93,8 @@ else
     phone: '(001) 4544 565 333',
     balance: 1000
   };
+
+Vue.prototype.$notifications = [];
 
   // Define global functions
 Vue.mixin({
@@ -132,7 +134,37 @@ Vue.mixin({
       }).catch((error) => {
         console.log(error);
       });
+    },
 
-    }
+    toUTCDate(isoDate){
+      var date = new Date(isoDate);
+      var year = date.getFullYear();
+      var month = date.getMonth()+1;
+      var hour = date.getHours();
+      var minute = date.getMinutes();
+      var second = date.getSeconds();
+      var dt = date.getDate();
+
+      if (dt < 10) {
+        dt = '0' + dt;
+      }
+      if (month < 10) {
+        month = '0' + month;
+      }
+
+      if (hour < 10) {
+        hour = '0' + hour;
+      }
+
+      if (minute < 10) {
+        minute = '0' + minute;
+      }
+
+      if (second < 10) {
+        second = '0' + second;
+      }
+      
+      return (year+'-' + month + '-'+dt + ' ' + hour + ':' + minute + ':' + second);
+    },
   }
 });
