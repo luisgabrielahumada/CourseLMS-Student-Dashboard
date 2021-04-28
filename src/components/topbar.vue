@@ -82,6 +82,28 @@ export default {
       this.$router.push({
         path: `/courses/0/${this.search}`
       });
+    },
+    
+    downloadNotifications(){
+      let config = {
+        params: {
+          is_read: false
+        },
+      }
+
+      axios.get(this.$api_host + 'user/notifications', config)
+      .then((response) => {
+        this.notifications = response.data.notifications;
+        this.notifications.forEach(element => {
+          element.time = this.toUTCDate(element.created_at);
+        });
+
+        setTimeout(this.downloadNotifications, 5000);
+      }).catch((error) => {
+        if (error.response && error.response.status == 401){
+          this.$router.push({ name: 'login' })  
+        }
+      });
     }
   },
 
@@ -89,22 +111,7 @@ export default {
     if(this.$route.name  == "Courses" && this.$route.params.teacher == 0)
       this.search = this.$route.params.category;
 
-    let config = {
-      params: {
-        is_read: false
-      },
-    }
-    axios.get(this.$api_host + 'user/notifications', config)
-      .then((response) => {
-        this.notifications = response.data.notifications;
-        this.notifications.forEach(element => {
-          element.time = this.toUTCDate(element.created_at);
-        });
-      }).catch((error) => {
-        if (error.response && error.response.status == 401){
-          this.$router.push({ name: 'login' })  
-        }
-      });
+    this.downloadNotifications();
   }
 };
 </script>
