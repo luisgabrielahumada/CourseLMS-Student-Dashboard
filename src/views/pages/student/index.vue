@@ -34,7 +34,7 @@ export default {
   <Layout>
     <PageHeader :title="title"/>
     <div class="row">
-      <div class="col-lg-6 col-xl-3">
+      <div class="col-md-6 col-xl-3">
         <!-- Simple card -->
         <b-card class="text-center">
           <img
@@ -52,7 +52,7 @@ export default {
       </div>
       <!-- end col -->
 
-      <div class="col-lg-6 col-xl-3">
+      <div class="col-md-6 col-xl-3">
         <!-- Simple card -->
         <b-card class="text-center">
           <img
@@ -70,7 +70,7 @@ export default {
       </div>
       <!-- end col -->
 
-      <div class="col-lg-6 col-xl-3">
+      <div class="col-md-6 col-xl-3">
         <!-- Simple card -->
         <b-card class="text-center">
           <img
@@ -88,7 +88,7 @@ export default {
       </div>
       <!-- end col -->
 
-      <div class="col-lg-6 col-xl-3">
+      <div class="col-md-6 col-xl-3">
         <!-- Simple card -->
         <b-card class="text-center">
           <img

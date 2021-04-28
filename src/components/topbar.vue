@@ -134,7 +134,7 @@ export default {
       </div>
 
       <div class="d-flex">
-        <div class="dropdown d-inline-block d-lg-none ml-2">
+        <!-- <div class="dropdown d-inline-block d-lg-none ml-2">
           <button
             type="button"
             class="btn header-item noti-icon waves-effect"
@@ -162,7 +162,7 @@ export default {
               </div>
             </form>
           </div>
-        </div>
+        </div> -->
 
         
         <b-dropdown
@@ -295,4 +295,11 @@ export default {
     background-color: #f8f9fa;
   }
 }
+
+@media (min-width: 450px){
+  .d-lg-block {
+      display: block !important;
+  }
+}
 </style>
+
