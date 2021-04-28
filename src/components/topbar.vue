@@ -99,7 +99,6 @@ export default {
         this.notifications = response.data.notifications;
         this.notifications.forEach(element => {
           element.time = this.toUTCDate(element.created_at);
-          console.log(element.time);
         });
       }).catch((error) => {
         if (error.response && error.response.status == 401){
