@@ -106,10 +106,8 @@ Vue.mixin({
     },
 
     balanceWithDollar(){
-      var num = this.$current_user.balance;
-      var dollars = num / 1.0;
-      dollars = dollars.toLocaleString("en-US", {style:"currency", currency:"USD"}); 
-      return dollars;
+      var dollars = this.$current_user.balance; 
+      return '$' + dollars;
     },
 
     formatDuration (duration) {

@@ -253,7 +253,7 @@ export default {
           <b-card-text>
             <i class="ri-map-pin-fill"></i>{{ pos.address}}
             <div v-for='phone in pos.phones' :key="phone.number">
-              <a :href="phone.link"><i class="ri-phone-fill"></i>{{ phone.number }}</a>
+              <a :href="phone.link">{{ phone.number }}<i class="ri-phone-fill"></i></a>
             </div>
           </b-card-text>
         </b-card>
