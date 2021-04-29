@@ -133,6 +133,7 @@ export default {
     </div>
     <!-- end row -->
 
+    <!-- Articles Categories -->
     <div class="row">
       <div class="col-md-6" v-for='blog in blogs' :key='blog.title'>
          <b-card no-body>

@@ -91,22 +91,6 @@ export default {
           </b-card-text>
         </b-card>
       </div>
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <gmap-map :center="{ lat: 11, lng: 12 }" :zoom="3" style="height: 300px">
-              <gmap-marker
-                v-for="(m, index) in search_data"
-                :key="index"
-                :position="m.position"
-                :clickable="true"
-                :draggable="true"
-                @click="center = m.position"
-              ></gmap-marker>
-            </gmap-map>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="row">
