@@ -16,6 +16,18 @@ export default {
   data() {
     return {
       title: "Home",
+      blogs : [
+        { 
+          'title' : 'How to subscribe',
+          'text' : 'For public courses, you can purchase a card from the points of sale page inside the app.',
+          'date' : '2020-08-23 05:04',
+        },
+        {
+          'title' : 'Answers to the questions asked',
+          'text' : 'The presentation of the lectures and files will begin on January 8, God willing. ',
+          'date' : '2021-04-29 12:01',
+        }
+      ]
     };
   },
 
@@ -108,6 +120,29 @@ export default {
 
     </div>
     <!-- end row -->
+
+    <div class="row">
+      <div class="col-md-6" v-for='blog in blogs' :key='blog.title'>
+         <b-card no-body>
+          <b-row no-gutters class="align-items-center">
+            <b-col md="4">
+              <img src="@/assets/images/small/img-2.jpg" class="rounded-0 card-img"/>
+            </b-col>
+            <b-col md="8">
+              <b-card-body>
+                <b-card-title>
+                  <h4 class="card-title">{{ blog.title }}</h4>
+                </b-card-title>
+                <b-card-text>{{ blog.text}}</b-card-text>
+                <p class="card-text">
+                  <small class="text-muted">{{blog.date}}</small>
+                </p>
+              </b-card-body>
+            </b-col>
+          </b-row>
+        </b-card>
+      </div>
+    </div>
 
   </Layout>
 </template>
