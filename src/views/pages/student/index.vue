@@ -27,17 +27,29 @@ export default {
           'text' : 'The presentation of the lectures and files will begin on January 8, God willing. ',
           'date' : '2021-04-29 12:01',
         }
-      ]
+      ],
+      slider1 : [],
+      slider2 : [],
     };
   },
 
   created(){
-    axios.get(this.$api_host + 'user/checkAuth')
+    let config = {
+      params: {
+        id : 1
+      }
+    }
+
+    axios.get(this.$api_host + 'main/sliders', config)
+    .then((response)=>{
+      this.slider1 = response.data.slider;
+      this.slider2 = response.data.slider;
+    })
     .catch((error)=>{
       if (error.response && error.response.status == 401){
         this.$router.push({ name: 'login' })  
       }
-    })
+    });
   }
 };
 </script>
@@ -144,5 +156,71 @@ export default {
       </div>
     </div>
 
+    <!-- Blog Slider Area -->
+    <div class="row">
+       <div class="col-lg-8 col-centered">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Blogs</h4>
+            <!-- <p class="card-title-desc">
+              Add captions to your slides easily with the
+              <code>.carousel-caption</code> element within any
+              <code>.carousel-item</code>.
+            </p> -->
+            <b-carousel
+              id="carousel-1"
+              v-model="slide"
+              :interval="3000"
+              controls
+              indicators
+              background="#ababab"
+              style="text-shadow: 1px 1px 2px #333;"
+            >
+              <!-- Slides with custom text -->
+              <b-carousel-slide v-for='(item, index) in slider1' :key='index' :img-src="item.image" >
+                <h5 class="text-white">{{ item.title }}</h5>
+                <p class="text-white-50">{{ item.sub_title }}</p>
+              </b-carousel-slide>
+
+            </b-carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  Blog Category Slider Area -->
+    <div class="row">
+       <div class="col-lg-8 col-centered">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Blog Categories</h4>
+            <b-carousel
+              id="carousel-1"
+              v-model="slide"
+              :interval="3000"
+              controls
+              indicators
+              background="#ababab"
+              style="text-shadow: 1px 1px 2px #333;"
+            >
+              <!-- Slides with custom text -->
+              <b-carousel-slide v-for='(item, index) in slider2' :key='index' :img-src="item.image" >
+                <h5 class="text-white">{{ item.title }}</h5>
+                <p class="text-white-50">{{ item.sub_title }}</p>
+              </b-carousel-slide>
+
+            </b-carousel>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </Layout>
 </template>
+
+<style scoped>
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+</style>
