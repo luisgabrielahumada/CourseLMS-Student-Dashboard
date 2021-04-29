@@ -252,5 +252,21 @@
         }
       }
     }
+  },
+  "student" : {
+    "sidebar" : {
+      "balance" : "Balance",
+      "home" : "Home",
+      "notifications" : "Notifications",
+      "mycourses" : "My Courses",
+      "allteachers" : "All Teachers",
+      "logout" : "Logout"
+    },
+    "footer" : {
+      "home" : "Home",
+      "wallet" : "Wallet",
+      "discover" : "Discover",
+      "possell" : "POS Sell"
+    }
   }
 }

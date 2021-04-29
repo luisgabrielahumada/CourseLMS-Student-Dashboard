@@ -252,5 +252,24 @@
         }
       }
     }
+  },
+
+  "student" : {
+    "sidebar" : {
+      "balance" : "الرصيد",
+      "home" : "الرئيسية",
+      "notifications" : "أشعارات",
+      "mycourses" : "اشتراكاتي",
+      "allteachers" : "جميع مدرسين",
+      "logout" : "جميع مدرسين"
+    },
+    "footer" : {
+      "home" : "الرئيسية",
+      "wallet" : "المحفظة",
+      "mycourses" : "اشتراكاتي",
+      "notifications" : "أشعارات",
+      "discover" : "أكتشف ",
+      "possell" : "نقاط البيع"
+    }
   }
 }

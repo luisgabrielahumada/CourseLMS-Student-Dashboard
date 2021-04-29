@@ -20,27 +20,27 @@ export default {
         <div class="col-sm-12 button-container">
           
           <router-link to="/">
-                <b-button variant="warning"><i class="ri-home-4-fill align-middle icon"></i><div class="icon-title">Home</div></b-button>
+                <b-button variant="warning"><i class="ri-home-4-fill align-middle icon"></i><div class="icon-title">{{$t('student.footer.home')}}</div></b-button>
           </router-link>
 
           <router-link to="/wallet">
-                <b-button variant="warning"><i class="ri-wallet-3-fill align-middle icon"></i><div class="icon-title">Wallet</div></b-button>
+                <b-button variant="warning"><i class="ri-wallet-3-fill align-middle icon"></i><div class="icon-title">{{$t('student.footer.wallet')}}</div></b-button>
           </router-link>
 
           <router-link to="/mycourses">
-                <b-button variant="warning"><i class=" ri-play-circle-fill align-middle icon"></i><div class="icon-title">My Courses</div></b-button>
+                <b-button variant="warning"><i class=" ri-play-circle-fill align-middle icon"></i><div class="icon-title">{{$t('student.footer.mycourses')}}</div></b-button>
           </router-link>
 
           <router-link to="/notifications">
-                <b-button variant="warning"><i class="ri-notification-4-fill align-middle icon"></i><div class="icon-title">Notifications</div></b-button>
+                <b-button variant="warning"><i class="ri-notification-4-fill align-middle icon"></i><div class="icon-title">{{$t('student.footer.notifications')}}</div></b-button>
           </router-link>
 
           <router-link to="/discover">
-                <b-button variant="warning"><i class=" ri-search-2-fill align-middle icon"></i><div class="icon-title">Discover</div></b-button>
+                <b-button variant="warning"><i class=" ri-search-2-fill align-middle icon"></i><div class="icon-title">{{$t('student.footer.discover')}}</div></b-button>
           </router-link>
 
           <router-link to="/possell">
-                <b-button variant="warning"><i class=" ri-shopping-bag-fill align-middle icon"></i><div class="icon-title">POS Sell</div></b-button>
+                <b-button variant="warning"><i class=" ri-shopping-bag-fill align-middle icon"></i><div class="icon-title">{{$t('student.footer.possell')}}</div></b-button>
           </router-link>
         </div>
       </div>

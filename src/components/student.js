@@ -2,32 +2,32 @@ export const menuItems = [
     
     {
         id: 2,
-        label: 'Home',
+        label: 'الرئيسية',
         icon: ' ri-home-4-line',
         link: '/'
     },
     {
         id: 3,
-        label: 'Notifications',
+        label: 'أشعارات',
         icon: ' ri-notification-4-line',
         link: '/notifications'
     },
     {
         id: 4,
-        label: 'My Courses',
+        label: 'اشتراكاتي',
         icon: 'ri-play-line',
         link: '/mycourses'
     },
        
     {
         id: 5,
-        label: 'All Teachers',
+        label: 'جميع مدرسين',
         icon: ' ri-user-2-line',
         link: '/teachers'
     },
     {
         id: 6,
-        label: 'Logout',
+        label: 'تسجيل خروج',
         icon: ' ri-logout-box-r-line',
         link: ''
     }    
