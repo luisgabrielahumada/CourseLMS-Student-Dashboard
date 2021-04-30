@@ -246,19 +246,19 @@ export default {
                         <b-card-header header-tag="header" role="tab">
                           <h6 class="m-0">
                             <a
-                              v-b-toggle.{{classItem.title}}
+                              :aria-controls='classItem.title'
                               class="text-dark"
                               href="javascript: void(0);"
                             >{{ classItem.title }}</a>
                           </h6>
                         </b-card-header>
-                        <b-collapse :id='classItem.title' visible accordion="my-accordion" role="tabpanel">
+                        <div>
                           <b-card-body>
                             <b-card-text v-for='content in classItem.contents' :key='content.id'>{{content.title}} {{ formatDuration(content.duration)}} 
                               <b-button v-on:click="playVideoPC(content.id)" variant="primary" class="btn-watch btn-sm" v-if='course.enrollment_id'>Watch</b-button>
                             </b-card-text>
                           </b-card-body>
-                        </b-collapse>
+                        </div>
                       </b-card>
                     </div>
                   </div>
