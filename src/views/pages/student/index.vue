@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       title: "Home",
-      blogs : [
+      articles : [
         { 
           'title' : 'How to subscribe',
           'text' : 'For public courses, you can purchase a card from the points of sale page inside the app.',
@@ -28,7 +28,7 @@ export default {
           'date' : '2021-04-29 12:01',
         }
       ],
-      slider1 : [],
+      blogs : [],
       slider2 : [],
     };
   },
@@ -40,9 +40,23 @@ export default {
       }
     }
 
+    axios.get(this.$api_host + 'blogs')
+    .then((response)=>{
+      this.blogs = response.data.blogs;
+      this.blogs.forEach((element) =>{
+        element.created_at = this.toUTCDate(element.created_at);
+      });
+      if(this.blogs.length == 1)
+        this.blogs.push(this.blogs[0]);
+    })
+    .catch((error)=>{
+      if (error.response && error.response.status == 401){
+        this.$router.push({ name: 'login' })  
+      }
+    });
+
     axios.get(this.$api_host + 'main/sliders', config)
     .then((response)=>{
-      this.slider1 = response.data.slider;
       this.slider2 = response.data.slider;
     })
     .catch((error)=>{
@@ -135,7 +149,7 @@ export default {
 
     <!-- Articles Categories -->
     <div class="row">
-      <div class="col-md-6" v-for='blog in blogs' :key='blog.title'>
+      <div class="col-md-6" v-for='blog in articles' :key='blog.title'>
          <b-card no-body>
           <b-row no-gutters class="align-items-center">
             <b-col md="4">
@@ -178,9 +192,9 @@ export default {
               style="text-shadow: 1px 1px 2px #333;"
             >
               <!-- Slides with custom text -->
-              <b-carousel-slide v-for='(item, index) in slider1' :key='index' :img-src="item.image" >
+              <b-carousel-slide v-for='(item, index) in blogs' :key='index' :img-src="item.img" >
                 <h5 class="text-white">{{ item.title }}</h5>
-                <p class="text-white-50">{{ item.sub_title }}</p>
+                <p class="text-white-50" v-html="item.body"></p>
               </b-carousel-slide>
 
             </b-carousel>
