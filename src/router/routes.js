@@ -132,12 +132,21 @@ export default [
     },
 
     {
-        path: '/discover',
-        name: 'discover',
+        path: '/blogs',
+        name: 'blogs',
         meta: {
             authRequired: true,
         },
-        component: () => import('../views/pages/student/discover')
+        component: () => import('../views/pages/student/blogs')
+    },
+
+    {
+        path: '/blog/detail/:blog',
+        name: 'blog-detail',
+        meta: {
+            authRequired: true,
+        },
+        component: () => import('../views/pages/student/blog-detail')
     },
 
     {

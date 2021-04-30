@@ -35,7 +35,7 @@ export default {
                 <b-button variant="warning"><i class="ri-notification-4-fill align-middle icon"></i><div class="icon-title">{{$t('student.footer.notifications')}}</div></b-button>
           </router-link>
 
-          <router-link to="/discover">
+          <router-link to="/blogs">
                 <b-button variant="warning"><i class=" ri-search-2-fill align-middle icon"></i><div class="icon-title">{{$t('student.footer.discover')}}</div></b-button>
           </router-link>
 
