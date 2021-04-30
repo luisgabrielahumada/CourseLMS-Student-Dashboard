@@ -310,7 +310,7 @@ export default {
 
               <router-link
                 :to="item.link"
-                v-if="!hasItems(item) && item.label != 'Logout'"
+                v-if="!hasItems(item) && item.link != '/logout'"
                 class="side-nav-link-ref"
               >
                 <i :class="`bx ${item.icon}`" v-if="item.icon"></i>
@@ -324,7 +324,7 @@ export default {
 
               <a
                 :to="item.link"
-                v-if="!hasItems(item) && item.label == 'Logout'"
+                v-if="!hasItems(item) && item.link == '/logout'"
                 class="side-nav-link-ref"
                 href="javascript:void(0);"
                 v-on:click="logout()"

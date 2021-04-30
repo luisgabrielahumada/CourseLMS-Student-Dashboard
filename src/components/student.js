@@ -29,6 +29,6 @@ export const menuItems = [
         id: 6,
         label: 'تسجيل خروج',
         icon: ' ri-logout-box-r-line',
-        link: ''
+        link: '/logout'
     }    
 ]
