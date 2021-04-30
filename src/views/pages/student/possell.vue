@@ -215,7 +215,7 @@ export default {
       else {
         let temp_data = [];
         this.pos_data.forEach(element => {
-          if(element.address.search(this.select_city) != -1)
+          if(element.name.search(this.select_city) != -1)
             temp_data.push(element);
         });
         this.search_data = temp_data;
@@ -233,10 +233,7 @@ export default {
       <div class="col-md-6">
           <select class="form-control mb-3" v-model='select_city'>
             <option value="0">Select</option>
-            <option value="Baghdad">Baghdad</option>
-            <option value="Basra">Basra</option>
-            <option value="Nineveh">Nineveh</option>
-            <option value="Erbil">Erbil</option>
+            <option v-for='item in pos_data'  :value="item.name" :key="item.name">{{item.name}}</option>
           </select>
       </div>
 

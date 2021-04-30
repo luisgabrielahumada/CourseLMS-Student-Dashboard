@@ -68,14 +68,14 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-// i18n.locale = "ar";
+i18n.locale = "ar";
 
 // Global Variables
-Vue.prototype.$api_host = 'http://127.0.0.1/api/v1/student/';
-Vue.prototype.$host     = 'http://127.0.0.1/';
+// Vue.prototype.$api_host = 'http://127.0.0.1/api/v1/student/';
+// Vue.prototype.$host     = 'http://127.0.0.1/';
 
-// Vue.prototype.$api_host = 'http://lms.olmaa.net/api/v1/student/';
-// Vue.prototype.$host     = 'http://lms.olmaa.net/';
+Vue.prototype.$api_host = 'http://lms.olmaa.net/api/v1/student/';
+Vue.prototype.$host     = 'http://lms.olmaa.net/';
 
 
 const loggeduser = localStorage.getItem('user');
