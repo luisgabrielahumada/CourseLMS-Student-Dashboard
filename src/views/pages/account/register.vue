@@ -164,8 +164,8 @@ export default {
                           </a>
                         </div>
 
-                        <h4 class="font-size-18 mt-4">Register account</h4>
-                        <p class="text-muted">Get your free Nazox account now.</p>
+                        <h4 class="font-size-18 mt-4">تسجيل حساب</h4>
+                        <p class="text-muted">إنشاء حساب جديد بإستخدام بريدك الإلكتروني وبياناتك</p>
                       </div>
 
                       <div class="p-2 mt-5">
@@ -199,7 +199,7 @@ export default {
                             <div class="col-lg-6">
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class="ri-user-2-line auti-custom-input-icon"></i>
-                                <label for="username">Full Name</label>
+                                <label for="username">الأسم الكامل</label>
                                 <input
                                   v-model="user.username"
                                   type="text"
@@ -216,7 +216,7 @@ export default {
 
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class="ri-mail-line auti-custom-input-icon"></i>
-                                <label for="useremail">Email</label>
+                                <label for="useremail">البريد الألكتروني</label>
                                 <input
                                   v-model="user.email"
                                   type="email"
@@ -233,7 +233,7 @@ export default {
 
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class="ri-lock-2-line auti-custom-input-icon"></i>
-                                <label for="userpassword">Password</label>
+                                <label for="userpassword">كلمة المرور</label>
                                 <input
                                   v-model="user.password"
                                   type="password"
@@ -250,7 +250,7 @@ export default {
 
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class="ri-lock-2-line auti-custom-input-icon"></i>
-                                <label for="resetpassword">Retype Password</label>
+                                <label for="resetpassword">اعادة كلمة المرور</label>
                                 <input
                                   v-model="user.resetpassword"
                                   type="password"
@@ -270,7 +270,7 @@ export default {
 
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class="ri-smartphone-line auti-custom-input-icon"></i>
-                                <label for="phone">Phone Number</label>
+                                <label for="phone">رقم الهاتف</label>
                                 <input
                                   v-model="user.phone"
                                   type="text"
@@ -287,7 +287,7 @@ export default {
                               
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class="ri-bank-fill auti-custom-input-icon"></i>
-                                <label for="male">City</label>
+                                <label for="male">المنطقة</label>
                                 <input
                                   v-model="user.city"
                                   type="text"
@@ -304,10 +304,10 @@ export default {
 
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class=" ri-men-line auti-custom-input-icon"></i>
-                                <label for="male">Male</label>
+                                <label for="male">الجنس</label>
                                 <select id="major" class="form-control" v-model="user.male">
-                                  <option value="1" selected>Man</option>
-                                  <option value="0">Woman</option>
+                                  <option value="1" selected>ذكر</option>
+                                  <option value="0">أنثى</option>
                                 </select>
                                 <div
                                   v-if="submitted && !$v.user.male.required"
@@ -317,7 +317,7 @@ export default {
 
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class=" ri-building-4-line auti-custom-input-icon"></i>
-                                <label for="school">School</label>
+                                <label for="school">المدرسة</label>
                                 <input
                                   v-model="user.school"
                                   type="text"
@@ -334,12 +334,12 @@ export default {
 
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class=" ri-edit-line auti-custom-input-icon"></i>
-                                <label for="major">Major</label>
+                                <label for="major">أختر الفرع</label>
                                 <select id="major" class="form-control" v-model="user.major">
-                                  <option selected>Select Major</option>
-                                  <option value="Science">Science</option>
-                                  <option value="Literary">Literary</option>
-                                  <option value="Biotic">Biotic</option>
+                                  <option selected>أختر الفرع</option>
+                                  <option value="Science">علمي</option>
+                                  <option value="Literary">أدبي</option>
+                                  <option value="Biotic">أحيائي</option>
                                 </select>
                                 
                                 <div
@@ -354,7 +354,7 @@ export default {
                                 <button
                                   class="btn btn-primary w-md waves-effect waves-light"
                                   type="submit"
-                                >Register</button>
+                                >تسجيل</button>
                               </div>
                             </div>
                           </div>
@@ -364,7 +364,7 @@ export default {
 
                       <div class="mt-4 text-center">
                         <p class="mb-0">
-                          By registering you agree to the Nazox
+                          للتسجيل انت توافق على شروط الموجودة
                           <a
                             href="#"
                             class="text-primary"
@@ -374,16 +374,16 @@ export default {
                       
                       <div class="mt-5 text-center">
                         <p>
-                          Already have an account ?
+                          هل لديك حساب بالفعل ؟
                           <router-link
                             tag="a"
                             to="/login"
                             class="font-weight-medium text-primary"
-                          >Login</router-link>
+                          >تسجيل دخول</router-link>
                         </p>
                         <p>
-                          © 2020 Nazox. Crafted with
-                          <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                          © 2021 TECH. Crafted with
+                          <i class="mdi mdi-heart text-danger"></i> by DEV
                         </p>
                       </div>
                     </div>

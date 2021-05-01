@@ -138,8 +138,8 @@ export default {
                           </a>
                         </div>
 
-                        <h4 class="font-size-18 mt-4">Welcome Back !</h4>
-                        <p class="text-muted">Sign in to continue to Nazox.</p>
+                        <h4 class="font-size-18 mt-4">أهلا بعودتك </h4>
+                        <p class="text-muted">تسجيل دخول</p>
                       </div>
 
                       <b-alert
@@ -195,7 +195,7 @@ export default {
                             <label
                               class="custom-control-label"
                               for="customControlInline"
-                            >Remember me</label>
+                            >تذكرني</label>
                           </div>
 
                           <div class="mt-4 text-center">
@@ -207,7 +207,7 @@ export default {
 
                           <div class="mt-4 text-center">
                             <router-link tag="a" to="/forgot-password" class="text-muted">
-                              <i class="mdi mdi-lock mr-1"></i> Forgot your password?
+                              <i class="mdi mdi-lock mr-1"></i> هل نسيت رقم السري ؟
                             </router-link>
                           </div>
                         </form>
@@ -215,16 +215,16 @@ export default {
 
                       <div class="mt-5 text-center">
                         <p>
-                          Don't have an account ?
+                          ليس لديك حساب ؟
                           <router-link
                             tag="a"
                             to="/register"
                             class="font-weight-medium text-primary"
-                          >Register</router-link>
+                          >تسجيل</router-link>
                         </p>
                         <p>
-                          © 2020 Nazox. Crafted with
-                          <i class="mdi mdi-heart text-danger"></i> by Themesdesign
+                          © 2020 TECH. Crafted with
+                          <i class="mdi mdi-heart text-danger"></i> by DEV
                         </p>
                       </div>
                     </div>
