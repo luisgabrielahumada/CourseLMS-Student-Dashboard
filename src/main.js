@@ -68,7 +68,7 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-i18n.locale = "ar";
+// i18n.locale = "ar";
 
 // Global Variables
 // Vue.prototype.$api_host = 'http://127.0.0.1/api/v1/student/';

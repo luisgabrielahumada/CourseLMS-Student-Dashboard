@@ -1,7 +1,7 @@
 <script>
 import Layout from "../../layouts/main";
 import appConfig from "@/app.config";
-import PageHeader from "@/components/page-header";
+import CoursePageHeader from "@/components/page-header-course";
 import axios from 'axios'
 
 /**
@@ -14,7 +14,7 @@ export default {
   },
   components: {
     Layout,
-    PageHeader
+    CoursePageHeader
   },
   data() {
     return {
@@ -134,7 +134,7 @@ export default {
 
 <template>
   <Layout>
-    <PageHeader :title="title"/>
+    <CoursePageHeader :title="title" :course='course.title'/>
     <div class="row">
       <div class="col-lg-12" v-if="course">
         <div class="card">
@@ -233,7 +233,7 @@ export default {
                   <p
                     class="mt-3"
                     v-html="course.short_description"></p>
-                  <p class="card-title-desc alert alert-danger">{{course.requirement}}</p>
+                  <p class="card-title-desc ">{{course.requirement}}</p>
                 </div>
               </div>
 
