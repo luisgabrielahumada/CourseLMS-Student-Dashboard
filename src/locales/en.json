@@ -266,7 +266,9 @@
       "home" : "Home",
       "wallet" : "Wallet",
       "discover" : "Discover",
-      "possell" : "POS Sell"
+      "possell" : "POS Sell",
+      "mycourses" : "My Courses",
+      "notifications" : "Notifications"
     }
   }
 }
