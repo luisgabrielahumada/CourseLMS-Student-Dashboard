@@ -294,7 +294,7 @@ export default {
                                   class="form-control"
                                   id="city"
                                   :class="{ 'is-invalid': submitted && $v.user.city.$error }"
-                                  placeholder="Enter Male"
+                                  placeholder="Enter City"
                                 />
                                 <div
                                   v-if="submitted && !$v.user.city.required"
@@ -305,7 +305,7 @@ export default {
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class=" ri-men-line auti-custom-input-icon"></i>
                                 <label for="male">الجنس</label>
-                                <select id="major" class="form-control" v-model="user.male">
+                                <select id="male" class="form-control" v-model="user.male">
                                   <option value="1" selected>ذكر</option>
                                   <option value="0">أنثى</option>
                                 </select>

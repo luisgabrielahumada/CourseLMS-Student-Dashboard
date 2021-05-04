@@ -27,7 +27,7 @@ export default {
       <div class="page-title-box d-flex align-items-center justify-content-between">
         <h2 class="mb-0">{{ title }}</h2>
 
-        <div class="page-title-right">
+        <div class="col-centered">
           <b-alert show variant="info">
             لكي تتمكن من مشاهدة {{course}}
 يجب تحميل تطبيق الديسكتوب الخاص بنا
@@ -38,3 +38,11 @@ export default {
   </div>
   <!-- end page title -->
 </template>
+
+
+<style scoped>
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+</style>

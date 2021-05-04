@@ -306,4 +306,5 @@ export default {
 .btn-watch{
   float:left;
 }
+
 </style>
