@@ -18,7 +18,9 @@ export default {
   },
   data() {
     return {
-      course: undefined,
+      course: {
+        category : {}
+      },
       title: "Course Detail",
       coupon_code : '',
       modal_buy : false
