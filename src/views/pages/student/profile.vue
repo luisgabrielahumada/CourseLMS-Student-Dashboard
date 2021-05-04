@@ -24,7 +24,6 @@ export default {
     axios.get(this.$api_host + 'user/profile')
     .then((response)=>{
       this.user = response.data.user;
-      console.log("this.user : ", this.user);
     })
     .catch((error)=>{
       if (error.response && error.response.status == 401){
@@ -102,8 +101,8 @@ export default {
                   <label class="col-md-3 col-form-label" for="phone">Phone</label>
                   <div class="col-md-9">
                     <input
-                      id="email"
-                      type="email"
+                      id="phone"
+                      type="phone"
                       class="form-control"
                       v-model="user.phone"
                     />
