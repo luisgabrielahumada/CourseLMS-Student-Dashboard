@@ -177,6 +177,15 @@ export default [
     },
 
     {
+        path: '/message',
+        name: 'message',
+        meta: {
+            authRequired: true,
+        },
+        component: () => import('../views/pages/student/message')
+    },
+
+    {
         path: '/chat',
         name: 'Chat',
         meta: {

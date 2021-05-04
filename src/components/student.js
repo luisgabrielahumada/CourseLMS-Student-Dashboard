@@ -31,8 +31,16 @@ export const menuItems = [
         icon: ' ri-user-2-line',
         link: '/teachers'
     },
+
     {
         id: 6,
+        label: 'رسالة',
+        icon: 'ri-mail-send-line',
+        link: '/message'
+    },
+
+    {
+        id: 7,
         label: 'تسجيل خروج',
         icon: ' ri-logout-box-r-line',
         link: '/logout'
