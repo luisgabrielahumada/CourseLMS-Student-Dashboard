@@ -240,7 +240,7 @@ export default {
               <div class="col-lg-4">
                 <div class="">
                   <div class="card-body">
-                    <h4 class="card-title">Classes</h4>
+                    <h4 class="card-title"> الحصص</h4>
                     <div role="tablist">
                       <b-card no-body class="mb-1 shadow-none" v-for='classItem in course.classes' :key='classItem.id'>
                         <b-card-header header-tag="header" role="tab">
