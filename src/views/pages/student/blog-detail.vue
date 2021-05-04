@@ -56,7 +56,7 @@ export default {
               <h4>{{blog.title}}</h4>
             </b-card-title>
             <p>
-              <medium class="text-muted">{{blog.created_at}}</medium>
+              {{blog.created_at}}
             </p>
             <p
               class="card-text"
