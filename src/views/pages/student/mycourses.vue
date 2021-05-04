@@ -39,7 +39,7 @@ export default {
   <Layout>
     <PageHeader :title="title"/>
     <div class="row" v-if='courses'>
-      <div v-for="course in courses" :key="course.id" class="col-lg-3 col-md-4 col-sm-6">
+      <div v-for="(course, index) in courses" :key="index" class="col-lg-3 col-md-4 col-sm-6">
         <b-card :img-src="course.image" img-alt="Course image" img-top>
           <b-card-title>
             <h5 class="card-title">{{course.title}}</h5>
