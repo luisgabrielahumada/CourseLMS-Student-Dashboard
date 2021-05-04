@@ -31,6 +31,14 @@ export default {
           <b-alert show variant="info">
             لكي تتمكن من مشاهدة {{course}}
 يجب تحميل تطبيق الديسكتوب الخاص بنا
+
+            <a href="http://api.lmsiq.com/public/videoplayers/PC player.zip">
+             <button
+                type="button"
+                class="btn btn-primary waves-effect waves-light ml-4 mr-4">
+                Download App
+              </button>
+            </a>
           </b-alert>
         </div>
       </div>

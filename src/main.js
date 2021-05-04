@@ -74,8 +74,8 @@ i18n.locale = "ar";
 // Vue.prototype.$api_host = 'http://127.0.0.1/api/v1/student/';
 // Vue.prototype.$host     = 'http://127.0.0.1/';
 
-Vue.prototype.$api_host = 'http://lms.olmaa.net/api/v1/student/';
-Vue.prototype.$host     = 'http://lms.olmaa.net/';
+Vue.prototype.$api_host = 'http://api.lmsiq.com/api/v1/student/';
+Vue.prototype.$host     = 'http://api.lmsiq.com/';
 
 
 const loggeduser = localStorage.getItem('user');
