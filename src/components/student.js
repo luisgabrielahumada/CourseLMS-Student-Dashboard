@@ -2,47 +2,47 @@ export const menuItems = [
     
     {
         id: 1,
-        label: 'الرئيسية',
+        label: 'student.sidebar.home',
         icon: ' ri-home-4-line',
         link: '/'
     },
     {
         id: 2,
-        label: 'أشعارات',
+        label: 'student.sidebar.notifications',
         icon: ' ri-notification-4-line',
         link: '/notifications'
     },
     {
         id: 3,
-        label: 'اشتراكاتي',
+        label: 'student.sidebar.mycourses',
         icon: 'ri-play-line',
         link: '/mycourses'
     },
        
     {
         id: 4,
-        label: 'جميع مدرسين',
+        label: 'student.sidebar.allteachers',
         icon: ' ri-user-2-line',
         link: '/teachers'
     },
 
     {
         id: 5,
-        label: 'رسالة',
+        label: 'student.sidebar.mail',
         icon: 'ri-mail-send-line',
         link: '/message'
     },
 
     {
         id: 6,
-        label: 'ملفي',
+        label: 'student.sidebar.myprofile',
         icon: 'ri-account-circle-line',
         link: '/profile'
     },
 
     {
         id: 7,
-        label: 'تسجيل خروج',
+        label: 'student.sidebar.logout',
         icon: ' ri-logout-box-r-line',
         link: '/logout'
     }    

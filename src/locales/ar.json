@@ -261,6 +261,8 @@
       "notifications" : "أشعارات",
       "mycourses" : "اشتراكاتي",
       "allteachers" : "جميع مدرسين",
+      "mail"  : "رسالة",
+      "myprofile": "ملفي",
       "logout" : "جميع مدرسين"
     },
     "footer" : {
