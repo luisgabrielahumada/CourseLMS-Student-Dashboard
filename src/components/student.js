@@ -1,6 +1,12 @@
 export const menuItems = [
     
     {
+        id: 1,
+        label: 'ملفي',
+        icon: 'ri-account-circle-line',
+        link: '/profile'
+    },
+    {
         id: 2,
         label: 'الرئيسية',
         icon: ' ri-home-4-line',
