@@ -17,6 +17,8 @@ export default {
     return {
       title: "Profile",
       user: {},
+      current_password : '',
+      new_password : '',
     };
   },
 
@@ -47,12 +49,39 @@ export default {
       axios.post(this.$api_host + 'user/updateProfile', config)
       .then((response)=>{
         this.user = response.data.user;
-        console.log("this.user : ", this.user);
         this.$bvToast.toast(response.data.message, {
           title: `Update profile`,
           variant: 'primary',
           solid: true
         });
+      })
+      .catch((error)=>{
+        if (error.response && error.response.status == 401){
+          this.$router.push({ name: 'login' })  
+        }
+      });
+    },
+
+    resetPassword(){
+      let config = {
+        current_password    : this.current_password,
+        new_password        : this.new_password,
+      }
+      
+      axios.post(this.$api_host + 'user/resetPassword', config)
+      .then((response)=>{
+        if(response.data.success)
+          this.$bvToast.toast(response.data.message, {
+            title: `Reset Password`,
+            variant: 'primary',
+            solid: true
+          });
+        else
+          this.$bvToast.toast(response.data.message, {
+            title: `Reset Password`,
+            variant: 'danger',
+            solid: true
+          });
       })
       .catch((error)=>{
         if (error.response && error.response.status == 401){
@@ -164,6 +193,45 @@ export default {
               </div>
               <!-- end col -->
             </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group row mb-3">
+                  <label class="col-md-3 col-form-label" for="current_password">Current Password</label>
+                  <div class="col-md-9">
+                    <input
+                      id="current_password"
+                      type="text"
+                      class="form-control"
+                      v-model='current_password'
+                    />
+                  </div>
+                </div>
+  
+                <div class="form-group row mb-3">
+                  <label class="col-md-3 col-form-label" for="new_password">New Password</label>
+                  <div class="col-md-9">
+                    <input
+                      id="new_password"
+                      type="text"
+                      class="form-control"
+                      v-model='new_password'
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group row mb-3">
+                  <b-button variant="primary" v-on:click='resetPassword()' >
+                    Reset Password
+                  </b-button>
+                </div>
+              </div>
+            </div>
+
           </div>
           <!-- end card-body -->
         </div>

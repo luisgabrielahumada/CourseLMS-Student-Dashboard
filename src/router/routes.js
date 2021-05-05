@@ -185,6 +185,8 @@ export default [
         component: () => import('../views/pages/student/message')
     },
 
+    // ================================ //
+
     {
         path: '/chat',
         name: 'Chat',
