@@ -255,5 +255,10 @@ export default {
       display: block !important;
   }
 }
+
+#page-topbar > div > div:nth-child(1) > div > a.logo.logo-light > span.logo-lg > img{
+  position:relative;
+  right:16%;
+}
 </style>
 
