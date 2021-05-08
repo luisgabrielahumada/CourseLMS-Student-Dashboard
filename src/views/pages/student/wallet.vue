@@ -9,13 +9,13 @@ import axios from 'axios'
  */
 export default {
   page: {
-    title: "Wallet",
+    title: "محفظة",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader },
   data() {
     return {
-      title: "Wallet",
+      title: "محفظة",
       coupon_code : '',
     };
   },
@@ -72,8 +72,8 @@ export default {
         <!-- Simple card -->
         <b-card class="text-center">
           <b-card-title>
-            <h3>Top up coint</h3>
-            <h5>Available balance ({{ balanceWithDollar()}})</h5>
+            <h3>تعبئه رصيد</h3>
+            <h5>الرصيد المتاح ({{ balanceWithDollar()}})</h5>
           </b-card-title>
 
           <p>
@@ -84,19 +84,19 @@ export default {
           </p>
           
           <b-card-text>
-            <h5>Recharge the balance</h5>
-            You can recharge your balance to be able to purchase our courses
+            <h5>اشحن الرصيد</h5>
+            يمكنك إعادة شحن رصيدك لتتمكن من شراء دوراتنا
           </b-card-text>
 
           <b-form-group
               id="example text"
               label-cols-sm="2"
               label-cols-lg="2"
-              label="Coupon"
+              label="الكود"
               label-for="coupon_code"
               class="mt-3"
             >
-            <b-form-input for="coupon_code" v-model="coupon_code" placeholder="Enter Coupon code"></b-form-input>
+            <b-form-input for="coupon_code" v-model="coupon_code" placeholder="أدخل الكود الخاص بك"></b-form-input>
           </b-form-group>
           
           <b-button
@@ -104,7 +104,7 @@ export default {
             type="button"
             variant="primary"
             v-on:click='charge()'>
-            Charge
+            أشحن الآن
           </b-button>
         </b-card>
       </div>

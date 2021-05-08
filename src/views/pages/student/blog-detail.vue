@@ -9,13 +9,13 @@ import axios from 'axios'
  */
 export default {
   page: {
-    title: "Blog Detail",
+    title: "تفاصيل المقال",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader },
   data() {
     return {
-      title: "Blog Detail",
+      title: "تفاصيل المقال",
       blog : '',
     };
   },

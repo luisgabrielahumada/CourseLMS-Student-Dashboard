@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      title: "Notifications",
+      title: "أشعارات",
       notifications : [],
     };
   },
@@ -74,9 +74,9 @@ export default {
               >
                 <thead class="thead-light">
                   <tr>
-                    <th>Date</th>
-                    <th>Message</th>
-                    <th style="width: 200px;">Action</th>
+                    <th>تاريخ</th>
+                    <th>الرسائل</th>
+                    <th style="width: 200px;">أختر</th>
                   </tr>
                 </thead>
                 <tbody>

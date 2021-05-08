@@ -8,14 +8,14 @@ import axios from 'axios'
  */
 export default {
   page: {
-    title: "My Courses",
+    title: "دوراتي",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader},
   data() {
     return {
       courses: [],
-      title : "My Courses"
+      title : "دوراتي"
     };
   },
 

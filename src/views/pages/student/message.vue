@@ -9,13 +9,13 @@ import axios from 'axios'
  */
 export default {
   page: {
-    title: "Message",
+    title: "الرسائل",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader },
   data() {
     return {
-      title: "Message",
+      title: "الرسائل",
       teachers: {},
       toTeacher: '',
       // subject : '',
@@ -67,7 +67,7 @@ export default {
               <div class="col-12">
 
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="teacher">Teacher</label>
+                  <label class="col-md-3 col-form-label" for="teacher">أختر المدرس</label>
                   <div class="col-md-9">
                     <select id="teacher" class="form-control" v-model="toTeacher">
                       <option v-for="teacher in teachers" :key='teacher.user_id' :value='teacher.user_id'>{{teacher.name}}</option>
@@ -88,7 +88,7 @@ export default {
                 </div> -->
 
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="message">Message</label>
+                  <label class="col-md-3 col-form-label" for="message">الرسالة</label>
                   <div class="col-md-9">
                     <textarea
                       id="message"
@@ -101,7 +101,7 @@ export default {
 
                 <div class="form-group row mb-3">
                   <b-button variant="primary" class=" text-center" v-on:click='sendMessage()'>
-                    Send Message
+                    أرسل الرسالة
                   </b-button>
                 </div>
 

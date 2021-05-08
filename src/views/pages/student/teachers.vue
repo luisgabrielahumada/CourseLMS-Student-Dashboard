@@ -8,13 +8,13 @@ import axios from 'axios'
  */
 export default {
   page: {
-    title: "Teachers",
+    title: "المدرسين",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader},
   data() {
     return {
-      title : "Teachers",
+      title : "المدرسين",
       teachers: []
     };
   },
@@ -47,7 +47,7 @@ export default {
           </b-card-title>
           <router-link
                 :to='teacher.route_url'
-                class="btn btn-primary btn-block">Categories</router-link>
+                class="btn btn-primary btn-block">شاهد</router-link>
         </b-card>
       </div>
       <!-- end col -->

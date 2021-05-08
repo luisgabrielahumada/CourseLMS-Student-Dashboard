@@ -9,13 +9,13 @@ import axios from 'axios'
  */
 export default {
   page: {
-    title: "Profile",
+    title: "الصفحة الشخصية",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader },
   data() {
     return {
-      title: "Profile",
+      title: "الصفحة الشخصية",
       user: {},
       current_password : '',
       new_password : '',
@@ -103,7 +103,7 @@ export default {
             <div class="row">
               <div class="col-12">
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="userName">User name</label>
+                  <label class="col-md-3 col-form-label" for="userName">الأسم الكامل</label>
                   <div class="col-md-9">
                     <input
                       id="username"
@@ -115,7 +115,7 @@ export default {
                 </div>
 
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="email">Email</label>
+                  <label class="col-md-3 col-form-label" for="email">البريد الألكتروني</label>
                   <div class="col-md-9">
                     <input
                       id="email"
@@ -127,7 +127,7 @@ export default {
                 </div>
 
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="phone">Phone</label>
+                  <label class="col-md-3 col-form-label" for="phone">رقم الهاتف</label>
                   <div class="col-md-9">
                     <input
                       id="phone"
@@ -139,7 +139,7 @@ export default {
                 </div>
 
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="male">Male</label>
+                  <label class="col-md-3 col-form-label" for="male">الجنس</label>
                   <div class="col-md-9">
                     <select id="male" class="form-control" v-model="user.male">
                       <option value="1" selected>ذكر</option>
@@ -149,7 +149,7 @@ export default {
                 </div>
 
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="city">City</label>
+                  <label class="col-md-3 col-form-label" for="city">المدينة</label>
                   <div class="col-md-9">
                     <input
                       id="city"
@@ -161,7 +161,7 @@ export default {
                 </div>
 
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="school">School</label>
+                  <label class="col-md-3 col-form-label" for="school">المدرسة</label>
                   <div class="col-md-9">
                     <input
                       id="school"
@@ -186,7 +186,7 @@ export default {
 
                 <div class="form-group row mb-3">
                   <b-button variant="primary" class=" text-center" v-on:click='saveProfile()'>
-                    Save Profile
+                    حفظ
                   </b-button>
                 </div>
 
@@ -201,7 +201,7 @@ export default {
             <div class="row">
               <div class="col-12">
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="current_password">Current Password</label>
+                  <label class="col-md-3 col-form-label" for="current_password">الرقم السري الحالي</label>
                   <div class="col-md-9">
                     <input
                       id="current_password"
@@ -213,7 +213,7 @@ export default {
                 </div>
   
                 <div class="form-group row mb-3">
-                  <label class="col-md-3 col-form-label" for="new_password">New Password</label>
+                  <label class="col-md-3 col-form-label" for="new_password">رقم السري الجديد</label>
                   <div class="col-md-9">
                     <input
                       id="new_password"
@@ -226,7 +226,7 @@ export default {
 
                 <div class="form-group row mb-3">
                   <b-button variant="primary" v-on:click='resetPassword()' >
-                    Reset Password
+                    حفظ الرقم السري
                   </b-button>
                 </div>
               </div>

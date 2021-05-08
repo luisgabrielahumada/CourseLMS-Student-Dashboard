@@ -9,13 +9,13 @@ import axios from 'axios'
  */
 export default {
   page: {
-    title: "POS Sell",
+    title: "نقاط البيع",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader },
   data() {
     return {
-      title: "POS Sell",
+      title: "نقاط البيع",
       select_city : '',
       pos_data : [
         {
@@ -238,7 +238,7 @@ export default {
       </div>
 
       <div class="col-md-6">
-        <b-button block variant="primary" size="md" v-on:click='search'>Search</b-button>
+        <b-button block variant="primary" size="md" v-on:click='search'>بحث</b-button>
       </div>
     </div>
     

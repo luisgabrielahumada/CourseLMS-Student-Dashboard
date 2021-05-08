@@ -9,7 +9,7 @@ import axios from 'axios'
  */
 export default {
   page: {
-    title: "Course Detail",
+    title: "تفاصيل الدورة",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: {
@@ -21,7 +21,7 @@ export default {
       course: {
         category : {}
       },
-      title: "Course Detail",
+      title: "تفاصيل الدورة",
       coupon_code : '',
       modal_buy : false
     };
@@ -64,7 +64,7 @@ export default {
       .then((response) =>{
         if(response.data.success){
           this.$bvToast.toast(response.data.message, {
-            title: `Buy Course with Coupon`,
+            title: `شراء الدورة عن طريق الكود`,
             variant: 'primary',
             solid: true
           });
@@ -73,7 +73,7 @@ export default {
           this.closeBuyDialog();
         }else{
           this.$bvToast.toast(response.data.message, {
-            title: `Buy Course with Coupon`,
+            title: `شراء الدورة عن طريق الكود`,
             variant: 'danger',
             solid: true
           });
@@ -96,7 +96,7 @@ export default {
       .then((response) => {
         if(response.data.success){
           this.$bvToast.toast(response.data.message, {
-            title: `Buy Course with Wallet`,
+            title: `شراء الدورة عن طريق المحفظة`,
             variant: 'primary',
             solid: true
           });
@@ -105,7 +105,7 @@ export default {
           this.closeBuyDialog();
         }else{
           this.$bvToast.toast(response.data.message, {
-            title: `Buy Course with Wallet`,
+            title: `شراء الدورة عن طريق المحفظة`,
             variant: 'danger',
             solid: true
           });
@@ -126,7 +126,7 @@ export default {
 
     playVideoPC(data){
       var element = document.createElement('a');
-      // element.setAttribute('href', 'iqacademyplayer://video/?url=' + data);
+      
       element.setAttribute('href', 'courselmsvideoplayer://video/?user=' + this.$current_user.id + '&class=' + data);
       element.click();
     }
@@ -158,22 +158,22 @@ export default {
                     
                 <div class="row text-center mt-2 container_buy" v-if='!course.enrollment_id'>
                   <b-button v-b-modal.modal-buy variant="primary" class="btn-block">
-                    <i class="mdi mdi-shopping mr-2"></i>Buy now
+                    <i class="mdi mdi-shopping mr-2"></i>شراء الآن
                   </b-button>
                   <b-modal header-class="modal-header-enough" v-model="modal_buy" title-class="font-18" id="modal-buy" hide-footer 
                     v-if="Number(this.$current_user.balance) >= Number(course.price)">
-                    <template #modal-header>Your current balance ({{ balanceWithDollar() }}) is enough</template>
+                    <template #modal-header>رصيدك الحالي ({{ balanceWithDollar() }}) </template>
                     <div class="text-center modal-content-buy">
-                      Direct payment from the balance
+                      رصيدك الحالي ({{ balanceWithDollar() }}) 
                       <p>
                         <button
                           type="button"
                           class="btn btn-primary waves-effect waves-light mt-3 mr-1"
                           v-on:click='buyWithWallet()'>
-                          Buy with Wallet
+                          شراء عن طريق المحفظة
                         </button>
                       </p>
-                      Or with new Coupon Code
+                      أو عن طريق الكود
                       <b-form-group
                         id="example text"
                         label-cols-sm="2"
@@ -189,7 +189,7 @@ export default {
                           type="button"
                           class="btn btn-primary waves-effect waves-light mt-3 mr-1"
                           v-on:click='applyCoupon()'>
-                          Apply Coupon
+                          تطبيق الكود
                         </button>
                       </p>
                     </div>
@@ -197,9 +197,9 @@ export default {
 
                   <b-modal header-class="modal-header-less" id="modal-buy" hide-footer 
                     v-else>
-                    <template #modal-header>Your current balance ({{ balanceWithDollar() }}) is not enough</template>
+                    <template #modal-header>رصيد الحالي ({{ balanceWithDollar() }}) </template>
                       <div class="text-center modal-content-buy">
-                        Buy with new Coupon Code
+                        شراء عن طريق الكود
                         <b-form-group
                           id="example text"
                           label-cols-sm="2"
@@ -215,7 +215,7 @@ export default {
                             type="button"
                             class="btn btn-primary waves-effect waves-light mt-3 mr-1"
                             v-on:click='applyCoupon()'>
-                            Apply Coupon
+                            تطبيق الكود
                           </button>
                         </p>
                       </div>
@@ -257,7 +257,7 @@ export default {
                         <div>
                           <b-card-body>
                             <b-card-text v-for='content in classItem.contents' :key='content.id'>{{content.title}} {{ formatDuration(content.duration)}} 
-                              <b-button v-on:click="playVideoPC(content.id)" variant="primary" class="btn-watch btn-sm" v-if='course.enrollment_id'>Watch</b-button>
+                              <b-button v-on:click="playVideoPC(content.id)" variant="primary" class="btn-watch btn-sm" v-if='course.enrollment_id'>مشاهدة</b-button>
                             </b-card-text>
                           </b-card-body>
                         </div>

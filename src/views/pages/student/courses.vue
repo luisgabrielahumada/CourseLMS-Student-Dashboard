@@ -8,14 +8,14 @@ import axios from 'axios'
  */
 export default {
   page: {
-    title: "Courses",
+    title: "الدورة",
     meta: [{ name: "description", content: appConfig.description }]
   },
   components: { Layout, PageHeader},
   data() {
     return {
       courses: [],
-      title : "Courses"
+      title : "الدورة"
     };
   },
 
@@ -67,7 +67,7 @@ export default {
             <div v-html="course.short_description">
             </div>
           </b-card-text>
-          <router-link :to='course.route' class="btn btn-primary btn-block">Course Detail</router-link>
+          <router-link :to='course.route' class="btn btn-primary btn-block">تفاصيل الدورة</router-link>
         </b-card>
       </div>
       <!-- end col-->

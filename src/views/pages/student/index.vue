@@ -85,7 +85,7 @@ export default {
           />
           <router-link
                 to="/teachers"
-                class="btn btn-primary btn-block mt-3">Teachers</router-link>
+                class="btn btn-primary btn-block mt-3">المدرسين</router-link>
         </b-card>
       </div>
       <!-- end col -->
@@ -103,7 +103,7 @@ export default {
             />
           <router-link
                 to="/"
-                class="btn btn-primary btn-block mt-3">Universities</router-link>
+                class="btn btn-primary btn-block mt-3">الجامعات</router-link>
         </b-card>
       </div>
       <!-- end col -->
@@ -121,7 +121,7 @@ export default {
             />
           <router-link
                 to="/"
-                class="btn btn-primary btn-block mt-3">Schools</router-link>
+                class="btn btn-primary btn-block mt-3">المدارس</router-link>
         </b-card>
       </div>
       <!-- end col -->
@@ -139,7 +139,7 @@ export default {
             />
           <router-link
                 to="/courses/0/0"
-                class="btn btn-primary btn-block mt-3">Free Courses</router-link>
+                class="btn btn-primary btn-block mt-3">دورات مجانيه</router-link>
         </b-card>
       </div>
       <!-- end col -->
