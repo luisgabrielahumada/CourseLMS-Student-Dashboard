@@ -260,5 +260,11 @@ export default {
   position:relative;
   right:16%;
 }
+
+@media screen and (max-width: 576px) {
+  .navbar-brand-box{
+    display:none;
+  }
+}
 </style>
 

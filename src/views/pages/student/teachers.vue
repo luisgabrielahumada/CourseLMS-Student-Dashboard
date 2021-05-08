@@ -38,7 +38,7 @@ export default {
   <Layout>
     <PageHeader :title="title"/>
     <div class="row">
-      <div v-for="teacher in teachers" :key="teacher.user_id" class="col-lg-3 col-md-4">
+      <div v-for="teacher in teachers" :key="teacher.user_id" class="col-md-3 col-sm-4 col-6">
         <!-- Simple card -->
         <b-card class="text-center">
           <img :src="teacher.image" alt class="rounded avatar-lg mb-4" />

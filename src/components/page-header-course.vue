@@ -94,4 +94,11 @@ export default {
 .page-header{
   font-size:25px;
 }
+
+@media screen and (max-width: 576px) {
+  .page-header{
+    display:none;
+  }
+}
+
 </style>

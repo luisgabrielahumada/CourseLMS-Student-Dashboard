@@ -65,15 +65,17 @@ export default {
   font-size:18px;
 }
 
-@media screen and (max-width: 600px) {
-  .icon-title {
+@media screen and (max-width: 576px) {
+  /* .icon-title {
     visibility: hidden;
     clear: both;
     float: left;
     margin: 10px auto 5px 20px;
     width: 28%;
     display: none;
-  }
+  } */
+
+  
 
   .footer{
     height: 60px;
