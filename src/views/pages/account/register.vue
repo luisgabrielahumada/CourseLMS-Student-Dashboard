@@ -119,6 +119,10 @@ export default {
                 this.$current_user.image = response.data.user.image;
                 this.$current_user.balance = response.data.user.balance;
                 
+                // Save Access Token to local storage
+                localStorage.setItem("access_token", response.data.access_token);
+                axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access_token}`;
+                
                 // Redirect to the originally requested page, or to the home page
                 this.$router.push(
                   this.$route.query.redirectFrom || { name: "home" }
