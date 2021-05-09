@@ -337,9 +337,13 @@ export default {
                                 <label for="major">أختر الفرع</label>
                                 <select id="major" class="form-control" v-model="user.major">
                                   <option selected>أختر الفرع</option>
-                                  <option value="Science">علمي</option>
                                   <option value="Literary">أدبي</option>
-                                  <option value="Biotic">أحيائي</option>
+                                  <option value="Biology">أحيائي</option>
+                                  <option value="Applied">تطبيقي </option>
+                                  <option value="Professional">مهني </option>
+                                  <option value="Commercial">تجاري</option>
+                                  <option value="Industrial">صناعي </option>
+                                  <option value="Others">اخرى </option>
                                 </select>
                                 
                                 <div
