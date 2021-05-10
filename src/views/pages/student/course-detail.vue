@@ -239,7 +239,7 @@ export default {
                 </div>
               </div>
 
-              <div class="col-lg-4">
+              <div class="col-lg-4" v-if='course.enrollment_id'>
                 <div class="">
                   <div class="card-body">
                     <h4 class="card-title"> الحصص</h4>
@@ -257,7 +257,7 @@ export default {
                         <div>
                           <b-card-body>
                             <b-card-text v-for='content in classItem.contents' :key='content.id'>{{content.title}} {{ formatDuration(content.duration)}} 
-                              <b-button v-on:click="playVideoPC(content.id)" variant="primary" class="btn-watch btn-sm" v-if='course.enrollment_id'>مشاهدة</b-button>
+                              <b-button v-on:click="playVideoPC(content.id)" variant="primary" class="btn-watch btn-sm">مشاهدة</b-button>
                             </b-card-text>
                           </b-card-body>
                         </div>
