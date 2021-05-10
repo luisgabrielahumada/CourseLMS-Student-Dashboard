@@ -55,9 +55,9 @@ export default {
 
     
     // All teachers for senders
-    axios.get(this.$api_host + 'all/teachers')
+    axios.get(this.$api_host + 'all/receivers')
     .then((response) => {
-      this.teachers = response.data.teachers;  
+      this.teachers = response.data.receivers;  
     }).catch((error)=>{
       if (error.response && error.response.status == 401){
         this.$router.push({ name: 'login' })  
