@@ -291,15 +291,31 @@ export default {
                               
                               <div class="form-group auth-form-group-custom mb-4">
                                 <i class="ri-bank-fill auti-custom-input-icon"></i>
-                                <label for="male">المنطقة</label>
-                                <input
-                                  v-model="user.city"
-                                  type="text"
-                                  class="form-control"
-                                  id="city"
-                                  :class="{ 'is-invalid': submitted && $v.user.city.$error }"
-                                  placeholder="Enter City"
-                                />
+                                <label for="city">المنطقة</label>
+                                <select id="city" class="form-control" v-model="user.city">
+                                  <option selected>الفرالمنطقة </option>
+                                  <option value="Erbil"> أربيل </option>
+                                  <option value="Anbar">تطبيقي </option>
+                                  <option value="Babylon">بابل  </option>
+                                  <option value="Baghdad">بغداد</option>
+                                  <option value="Basra">البصرة </option>
+                                  <option value="Halabja">حلبجة </option>
+
+                                  <option value="Dohuk">دهوك </option>
+                                  <option value="Diwaniyah">الديوانية </option>
+                                  <option value="Baquba">بعقوبة </option>
+                                  <option value="Dhi Qar">  ذي قار </option>
+                                  <option value="Sulaymaniyah">السليمانية </option>
+                                  <option value="Salahaddin">صلاح الدين </option>
+                                  <option value="Kirkuk">كركوك </option>
+
+                                  <option value="Karbala">كربلاء </option>
+                                  <option value="Double">المثنى </option>
+                                  <option value="Maysan">ميسان  </option>
+                                  <option value="Najaf">النجف  </option>
+                                  <option value="Wasit">واسط  </option>
+                                  <option value="Mosul"> الموصل </option>
+                                </select>
                                 <div
                                   v-if="submitted && !$v.user.city.required"
                                   class="invalid-feedback"
