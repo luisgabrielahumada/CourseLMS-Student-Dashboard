@@ -163,7 +163,8 @@ Vue.mixin({
         second = '0' + second;
       }
       
-      return (year+'-' + month + '-'+dt + ' ' + hour + ':' + minute + ':' + second);
+      // return (year+'-' + month + '-'+dt + ' ' + hour + ':' + minute + ':' + second);
+      return (year+'-' + month + '-'+dt);
     },
   }
 });

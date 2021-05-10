@@ -14,7 +14,7 @@ import { emailData } from "../email/data-inbox";
  */
 export default {
   page: {
-    title: "Message",
+    title: "الرسائل",
     meta: [{ name: "description" }]
   },
   components: { Layout, PageHeader, ckeditor: CKEditor.component },
@@ -22,7 +22,7 @@ export default {
     return {
       emailData: emailData,
       paginatedEmailData: emailData,
-      title: "Message",
+      title: "الرسائل",
       
       // page number
       currentPage: 1,
