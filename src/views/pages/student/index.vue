@@ -71,12 +71,12 @@ export default {
 <template>
   <Layout>
     <PageHeader :title="title"/>
-    <div class="row">
+    <div class="row home-pc">
       <div class="col-md-6 col-xl-3">
         <!-- Simple card -->
         <b-card class="text-center">
           <img
-            class="rounded-circle mr-2"
+            class="rounded-circle mr-2 "
             alt=""
             width="200"
             height="200"
@@ -94,7 +94,7 @@ export default {
         <!-- Simple card -->
         <b-card class="text-center">
           <img
-              class="rounded-circle mr-2"
+              class="rounded-circle mr-2 "
               alt=""
               width="200"
               height="200"
@@ -112,7 +112,7 @@ export default {
         <!-- Simple card -->
         <b-card class="text-center">
           <img
-              class="rounded-circle mr-2"
+              class="rounded-circle mr-2 "
               alt=""
               width="200"
               height="200"
@@ -130,7 +130,7 @@ export default {
         <!-- Simple card -->
         <b-card class="text-center">
           <img
-              class="rounded-circle mr-2"
+              class="rounded-circle mr-2 "
               alt=""
               width="200"
               height="200"
@@ -146,6 +146,36 @@ export default {
 
     </div>
     <!-- end row -->
+
+    <div class="row home-mobile">
+      <div class="col-3 text-center">
+        <router-link to="/teachers">
+          <i class="ri-user-2-fill align-middle icon"></i>
+          <div class="icon-title">المدرسين</div>
+        </router-link>
+      </div>
+
+      <div class="col-3 text-center">
+        <router-link to="/">
+          <i class=" ri-building-4-fill align-middle icon"></i>
+          <div class="icon-title">الجامعات</div>
+        </router-link>
+      </div>
+
+      <div class="col-3 text-center">
+        <router-link to="/teachers">
+          <i class=" ri-bank-fill align-middle icon"></i>
+          <div class="icon-title">المدارس</div>
+        </router-link>
+      </div>
+
+      <div class="col-3 text-center">
+        <router-link to="/courses/0/0">
+          <i class="ri-play-fill align-middle icon"></i>
+          <div class="icon-title">دورات مجانيه</div>
+        </router-link>
+      </div>
+    </div>
 
     <!-- Articles Categories -->
     <div class="row">
@@ -235,5 +265,23 @@ export default {
 .col-centered{
   float: none;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .home-pc{
+    display:none;
+  }
+  .home-mobile{
+    display: flex;
+  }
+}
+
+@media screen and (min-width:769px){
+  .home-pc{
+    display: flex;
+  }
+  .home-mobile{
+    display: none;
+  }
 }
 </style>
