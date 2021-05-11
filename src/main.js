@@ -108,7 +108,7 @@ Vue.mixin({
 
     balanceWithDollar(){
       var dollars = this.$current_user.balance; 
-      return '$' + dollars;
+      return dollars;
     },
 
     formatDuration (duration) {

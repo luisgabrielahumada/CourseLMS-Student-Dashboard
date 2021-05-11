@@ -79,7 +79,7 @@ export default {
         element.time = this.toUTCDate(element.created_at);
       });
 
-      this.showSent();
+      this.showReceived();
       
     }).catch((error)=>{
       if (error.response && error.response.status == 401){

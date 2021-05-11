@@ -230,7 +230,7 @@ export default {
                   <h5 class="mt-1 mb-3">{{course.title}}</h5>
 
                   <h5 class="mt-2" v-if='!course.is_private'>
-                    {{ convertWithDollar(course.price)}}
+                    {{ course.price ? course.price : 0}}
                   </h5>
                   <p
                     class="mt-3"
