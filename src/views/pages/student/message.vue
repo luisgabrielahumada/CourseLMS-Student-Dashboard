@@ -44,7 +44,10 @@ export default {
 
       showModal: false,
       editor: ClassicEditor,
-      editorData: ""
+      editorData: "",
+
+      selectedEmail: '',
+      showMessage : false,
     };
   },
 
@@ -136,6 +139,11 @@ export default {
         this.endIndex
       );
       this.statusMessageContent = 0;
+    },
+
+    showMessageDetail(email){
+      this.showMessage = true;
+      this.selectedEmail = email;
     }
   },
 
@@ -186,7 +194,7 @@ export default {
                   v-for="(email,index) in paginatedEmailData"
                   :key="index"
                   :class="{ 'unread': `${email.unread}` === 'true' }"
-                >
+                  v-on:click="showMessageDetail(email)">
                   <div class="col-mail col-mail-1">
                     <div class="checkbox-wrapper-mail">
                       <input :id="`chk-${index}`" type="checkbox" />
@@ -245,6 +253,18 @@ export default {
         </b-button>
       </template>
     </b-modal> 
+
+    <b-modal title="Message Detail" v-model='showMessage' title-class="font-18" hide-footer >
+          <b-card-body >
+            <div v-if="selectedEmail.sender">
+              {{ selectedEmail.sender.name }} : Sender
+            </div>
+            <div v-if="selectedEmail.receiver">
+              {{ selectedEmail.receiver.name }} : Receiver
+            </div>
+            {{ selectedEmail.content}} : Content
+          </b-card-body>
+    </b-modal>
   </Layout>
 </template>
 
