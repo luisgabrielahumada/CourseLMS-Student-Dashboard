@@ -122,6 +122,7 @@ export default {
                       type="email"
                       class="form-control"
                       v-model="user.email"
+                      disabled
                     />
                   </div>
                 </div>
@@ -134,6 +135,7 @@ export default {
                       type="phone"
                       class="form-control"
                       v-model="user.phone"
+                      disabled
                     />
                   </div>
                 </div>

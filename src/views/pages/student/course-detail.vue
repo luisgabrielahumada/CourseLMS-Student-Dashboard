@@ -235,7 +235,7 @@ export default {
                   <p
                     class="mt-3"
                     v-html="course.short_description"></p>
-                  <p class="card-title-desc ">{{course.big_description}}</p>
+                  <p class="card-title-desc" v-html="course.big_description"></p>
                 </div>
               </div>
 
