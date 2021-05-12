@@ -229,13 +229,13 @@ export default {
                   <a href="#" class="text-primary">{{course.category.name}}</a>
                   <h5 class="mt-1 mb-3">{{course.title}}</h5>
 
-                  <h5 class="mt-2" v-if='!course.is_private'>
-                    {{ course.price ? course.price : 0}}
+                  <h5 class="mt-2">
+                    Price : {{ course.price ? course.price : 0}}
                   </h5>
                   <p
                     class="mt-3"
                     v-html="course.short_description"></p>
-                  <p class="card-title-desc ">{{course.requirement}}</p>
+                  <p class="card-title-desc ">{{course.big_description}}</p>
                 </div>
               </div>
 
