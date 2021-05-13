@@ -84,7 +84,7 @@ export default {
                     <td>{{item.time}}</td>
                     <td>{{item.data["body"]}}</td>
                     <td>
-                      <button class="btn btn-light btn-rounded" v-on:click='markRead(item.id)' v-if='!item.is_read'>
+                      <button class="btn btn-light btn-rounded" v-on:click='markRead(item.id)' v-if='item.is_read == 0'>
                         Mask as Read
                       </button>
                     </td>
