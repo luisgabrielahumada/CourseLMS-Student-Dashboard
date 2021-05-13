@@ -293,7 +293,6 @@ export default {
                                 <i class="ri-bank-fill auti-custom-input-icon"></i>
                                 <label for="city">المحافظة</label>
                                 <select id="city" class="form-control" v-model="user.city">
-                                  <option selected>أختر المحافطة </option>
                                   <option value="Erbil"> بغداد </option>
                                   <option value="Anbar">الأنبار </option>
                                   <option value="Babylon">بابل  </option>
@@ -325,7 +324,7 @@ export default {
                                 <i class=" ri-men-line auti-custom-input-icon"></i>
                                 <label for="male">الجنس</label>
                                 <select id="male" class="form-control" v-model="user.male">
-                                  <option value="1" selected>ذكر</option>
+                                  <option value="1">ذكر</option>
                                   <option value="0">أنثى</option>
                                 </select>
                                 <div
@@ -355,7 +354,6 @@ export default {
                                 <i class=" ri-edit-line auti-custom-input-icon"></i>
                                 <label for="major">أختر الفرع</label>
                                 <select id="major" class="form-control" v-model="user.major">
-                                  <option selected>أختر الفرع</option>
                                   <option value="Literary">أدبي</option>
                                   <option value="Biology">أحيائي</option>
                                   <option value="Applied">تطبيقي </option>
