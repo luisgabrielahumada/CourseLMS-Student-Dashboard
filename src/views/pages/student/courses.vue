@@ -84,3 +84,9 @@ export default {
 
   </Layout>
 </template>
+
+<style scoped>
+.card-img-top{
+  height:150px;
+}
+</style>

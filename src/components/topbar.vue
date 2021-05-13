@@ -97,13 +97,13 @@ export default {
         this.notifications.forEach(element => {
           element.time = this.toUTCDate(element.created_at);
         });
-
-        setTimeout(this.downloadNotifications, 5000);
       }).catch((error) => {
         if (error.response && error.response.status == 401){
           this.$router.push({ name: 'login' })  
         }
       });
+
+      setTimeout(this.downloadNotifications, 5000);
     }
   },
 
@@ -199,7 +199,7 @@ export default {
         >
           <template v-slot:button-content>
             <i class="ri-notification-3-line"></i>
-            <span class="noti-dot"></span>
+            <span class="noti-dot" v-if='notifications.length'></span>
           </template>
           <div class="p-3">
             <div class="row align-items-center">
