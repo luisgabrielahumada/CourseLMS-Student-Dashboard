@@ -266,5 +266,9 @@ export default {
     display:none;
   }
 }
+
+.logo-sm > img{
+  display:none;
+}
 </style>
 
