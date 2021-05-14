@@ -251,7 +251,7 @@ export default {
       <div id="sidebar-menu">
         <!-- Left Menu Start -->
         
-        <div class="text-center mt-2 mb-4" >
+        <div class="text-center mt-2 mb-4 user-avatar" >
           <img :src='user.image' alt class="rounded-circle avatar-md mb-4" />
           <b-card-title>
             <h5 class="sidebar-text">{{ user.name }}</h5>
@@ -386,5 +386,9 @@ export default {
 <style>
 .sidebar-text{
   color:white !important;
+}
+
+.vertical-collpsed .vertical-menu .simplebar-content-wrapper .user-avatar{
+  display:none;
 }
 </style>
