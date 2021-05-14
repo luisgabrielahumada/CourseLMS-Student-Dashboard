@@ -197,7 +197,7 @@ export default {
 
                   <b-modal header-class="modal-header-less" id="modal-buy" hide-footer 
                     v-else>
-                    <template #modal-header>رصيد الحالي ({{ balanceWithDollar() }}) </template>
+                    <template #modal-header>رصيد الحالي ({{ balanceWithDollar() }}) أقل من أجمالي الطلب </template>
                       <div class="text-center modal-content-buy">
                         شراء عن طريق الكود
                         <b-form-group

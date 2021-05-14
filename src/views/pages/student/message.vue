@@ -161,24 +161,24 @@ export default {
     <div class="row">
       <div class="col-12">
         <div class="email-leftbar card">
-          <b-button variant="danger" @click="showModal = true">Compose</b-button>
+          <b-button variant="danger" @click="showModal = true">أرسال رسالة</b-button>
           <div class="mail-list mt-4" v-if="statusMessageContent == 0">
             <a href="javascript: void(0);" class="active" @click="showReceived" >
-              <i class="mdi mdi-email-outline mr-2"></i> Received
+              <i class="mdi mdi-email-outline mr-2"></i> أستلام
               <!-- <span class="ml-1 float-right">(18)</span> -->
             </a>
             <a href="javascript: void(0);" @click="showSent">
-              <i class="mdi mdi-email-outline mr-2"></i> Sent
+              <i class="mdi mdi-email-outline mr-2"></i> أرسال
             </a>
           </div>
 
           <div class="mail-list mt-4" v-if="statusMessageContent == 1">
             <a href="javascript: void(0);" @click="showReceived" >
-              <i class="mdi mdi-email-outline mr-2"></i> Received
+              <i class="mdi mdi-email-outline mr-2"></i> أستلام
               <!-- <span class="ml-1 float-right">(18)</span> -->
             </a>
             <a href="javascript: void(0);" class="active" @click="showSent">
-              <i class="mdi mdi-email-outline mr-2"></i> Sent
+              <i class="mdi mdi-email-outline mr-2"></i> أرسال
             </a>
           </div>
 
@@ -230,7 +230,7 @@ export default {
         </div>
       </div>
     </div>
-    <b-modal v-model="showModal" title="New Message" centered>
+    <b-modal v-model="showModal" title="رسالة جديدة" centered>
       <form>
         <div class="form-group">
           <select id="teacher" class="form-control" v-model="toTeacher">
@@ -246,9 +246,9 @@ export default {
         </div>
       </form>
       <template v-slot:modal-footer>
-        <b-button variant="secondary" @click="showModal = false">Close</b-button>
+        <b-button variant="secondary" @click="showModal = false">غلق</b-button>
         <b-button variant="primary" @click="sendMessage">
-          Send
+          أرسال
           <i class="fab fa-telegram-plane ml-1"></i>
         </b-button>
       </template>
@@ -257,12 +257,12 @@ export default {
     <b-modal title="Message Detail" v-model='showMessage' title-class="font-18" hide-footer >
           <b-card-body >
             <div v-if="selectedEmail.sender">
-              {{ selectedEmail.sender.name }} : Sender
+            المرسل :  {{ selectedEmail.sender.name }} 
             </div>
             <div v-if="selectedEmail.receiver">
-              {{ selectedEmail.receiver.name }} : Receiver
+             المستلم : {{ selectedEmail.receiver.name }} 
             </div>
-            {{ selectedEmail.content}} : Content
+          المحتوى :  {{ selectedEmail.content}} : 
           </b-card-body>
     </b-modal>
   </Layout>

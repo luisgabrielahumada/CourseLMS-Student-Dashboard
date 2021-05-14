@@ -183,41 +183,47 @@ export default {
       immediate: true,
       handler(newVal, oldVal) {
         if (newVal !== oldVal) {
-          switch (newVal) {
-            case "dark":
-              document.body.setAttribute("data-sidebar", "dark");
-              document.body.removeAttribute("data-topbar");
-              document.body.removeAttribute("data-sidebar-size");
-              break;
-            case "light":
-              document.body.setAttribute("data-topbar", "dark");
-              document.body.removeAttribute("data-sidebar");
-              document.body.removeAttribute("data-sidebar-size");
-              document.body.classList.remove("vertical-collpsed");
-              break;
-            case "compact":
-              document.body.setAttribute("data-sidebar-size", "small");
-              document.body.setAttribute("data-sidebar", "dark");
-              document.body.classList.remove("vertical-collpsed");
-              document.body.removeAttribute("data-topbar", "dark");
-              break;
-            case "icon":
-              document.body.setAttribute("data-keep-enlarged", "true");
-              document.body.classList.add("vertical-collpsed");
-              document.body.setAttribute("data-sidebar", "dark");
-              document.body.removeAttribute("data-topbar", "dark");
-              break;
-            case "colored":
-              document.body.setAttribute("data-sidebar", "colored");
-              document.body.removeAttribute("data-keep-enlarged");
-              document.body.classList.remove("vertical-collpsed");
-              document.body.removeAttribute("data-sidebar-size");
-              break;
-            default:
-              document.body.setAttribute("data-sidebar", "dark");
-              break;
-          }
+        //   switch (newVal) {
+        //     case "dark":
+        //       document.body.setAttribute("data-sidebar", "dark");
+        //       document.body.removeAttribute("data-topbar");
+        //       document.body.removeAttribute("data-sidebar-size");
+        //       break;
+        //     case "light":
+        //       document.body.setAttribute("data-topbar", "dark");
+        //       document.body.removeAttribute("data-sidebar");
+        //       document.body.removeAttribute("data-sidebar-size");
+        //       document.body.classList.remove("vertical-collpsed");
+        //       break;
+        //     case "compact":
+        //       document.body.setAttribute("data-sidebar-size", "small");
+        //       document.body.setAttribute("data-sidebar", "dark");
+        //       document.body.classList.remove("vertical-collpsed");
+        //       document.body.removeAttribute("data-topbar", "dark");
+        //       break;
+        //     case "icon":
+        //       document.body.setAttribute("data-keep-enlarged", "true");
+        //       document.body.classList.add("vertical-collpsed");
+        //       document.body.setAttribute("data-sidebar", "dark");
+        //       document.body.removeAttribute("data-topbar", "dark");
+        //       break;
+        //     case "colored":
+        //       document.body.setAttribute("data-sidebar", "colored");
+        //       document.body.removeAttribute("data-keep-enlarged");
+        //       document.body.classList.remove("vertical-collpsed");
+        //       document.body.removeAttribute("data-sidebar-size");
+        //       break;
+        //     default:
+        //       document.body.setAttribute("data-sidebar", "dark");
+        //       break;
+        //   }
+          document.body.setAttribute("data-topbar", "light");
+          document.body.removeAttribute("data-sidebar");
+          document.body.removeAttribute("data-sidebar-size");
+          document.body.classList.remove("vertical-collpsed");
         }
+
+       
       },
     },
     width: {
@@ -251,7 +257,7 @@ export default {
       <div id="sidebar-menu">
         <!-- Left Menu Start -->
         
-        <div class="text-center mt-2 mb-4 user-avatar" >
+        <div class="text-center mt-2 mb-4" >
           <img :src='user.image' alt class="rounded-circle avatar-md mb-4" />
           <b-card-title>
             <h5 class="sidebar-text">{{ user.name }}</h5>
@@ -385,10 +391,17 @@ export default {
 
 <style>
 .sidebar-text{
-  color:white !important;
+  color:#0071d9 !important;
 }
-
-.vertical-collpsed .vertical-menu .simplebar-content-wrapper .user-avatar{
-  display:none;
+#sidebar-menu ul li a i {
+    display: inline-block;
+    min-width: 1.5rem;
+    padding-bottom: 0.125em;
+    font-size: 1.1rem;
+    line-height: 1.40625rem;
+    vertical-align: middle;
+    color: #0071d9;
+    transition: all 0.4s;
+    opacity: 0.75;
 }
 </style>
