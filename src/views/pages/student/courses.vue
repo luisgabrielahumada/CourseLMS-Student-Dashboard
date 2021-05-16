@@ -20,6 +20,11 @@ export default {
   },
 
   async mounted() {
+
+    // Show Loading Dialog
+    this.$loading.show();
+
+    // Get courses data from API
     let teacher_id = this.$route.params.teacher;
     var config;
 
@@ -45,6 +50,9 @@ export default {
       this.courses.forEach(course => {
         course.route = '/course-detail/' + course.id;
       });
+
+      // Hide Loading dialog
+      this.$loading.hide();
     })
     .catch((error)=>{
       if (error.response && error.response.status == 401){
@@ -81,7 +89,6 @@ export default {
       Loading....
     </div>
     <!-- end row -->
-
   </Layout>
 </template>
 

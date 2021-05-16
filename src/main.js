@@ -8,6 +8,7 @@ import VueMask from 'v-mask'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import VueYoutube from 'vue-youtube'
 import axios from 'axios';
+import Dialog from 'vue-dialog-loading'
 
 import vco from "v-click-outside"
 
@@ -60,6 +61,12 @@ Vue.use(VueGoogleMaps, {
   installComponents: true
 })
 Vue.component('apexchart', VueApexCharts)
+
+Vue.use(Dialog, {
+  dialogBtnColor: '#0f0',
+  background:'rgba(0, 0, 0, 0.5)'
+})
+
 
 new Vue({
   router,

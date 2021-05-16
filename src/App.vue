@@ -19,3 +19,14 @@ export default {
   }
 };
 </script>
+
+<style>
+@font-face {
+  font-family: Somar;
+  src: url('assets/fonts/Somar-Medium.otf');
+}
+
+.body{
+  font-family : 'Somar',
+}
+</style>
