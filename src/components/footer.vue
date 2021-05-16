@@ -78,12 +78,16 @@ img.align-middle.icon {
     width: 28%;
     display: none;
   } */
+}
 
-  
+@font-face {
+  font-family: Somar;
+  src: url('../assets/fonts/Somar-Medium.otf');
+}
 
-  .footer{
-    height: 60px;
-    padding:10px;
-  }
+.footer{
+  height: 60px;
+  padding:10px;
+  font-family : 'Somar',
 }
 </style>
