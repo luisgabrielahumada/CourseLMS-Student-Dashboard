@@ -2,10 +2,16 @@
 // general-rtl.scss
 //
 
+@font-face {
+    font-family: Somar;
+    src: url('../fonts/Somar-Medium.otf');
+  }
+
 html {
     direction: rtl;
 }
 
 body {
     text-align: right;
+    font-family: 'Somar';
 }

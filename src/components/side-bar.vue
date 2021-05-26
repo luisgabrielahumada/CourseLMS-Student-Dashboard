@@ -390,6 +390,12 @@ export default {
 
 
 <style>
+
+@font-face {
+  font-family: Somar;
+  src: url('../assets/fonts/Somar-Medium.otf');
+}
+
 .sidebar-text{
   color:#0071d9 !important;
 }
@@ -403,6 +409,7 @@ export default {
     color: #0071d9;
     transition: all 0.4s;
     opacity: 0.75;
+    font-family : 'Somar',
 }
 
 .vertical-collpsed .vertical-menu .simplebar-content-wrapper .user-avatar{
